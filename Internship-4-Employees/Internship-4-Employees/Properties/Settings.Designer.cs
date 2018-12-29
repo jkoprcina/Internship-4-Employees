@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Internship_4_Employees.Presentation.Properties
+namespace Internship_4_Employees.Properties
 {
 
 

@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Internship_4_Employees.Interface.Enumerators
+{
+    public enum States
+    {
+        Finished = 1,
+        Ongoing = 2,
+        Planned = 3
+    }
+}

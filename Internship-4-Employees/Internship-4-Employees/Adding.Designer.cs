@@ -30,13 +30,15 @@
         {
             this.nameLbl = new System.Windows.Forms.Label();
             this.lastnameLbl = new System.Windows.Forms.Label();
-            this.nameTbx = new System.Windows.Forms.TextBox();
-            this.lastnameTbx = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.NameTbx = new System.Windows.Forms.TextBox();
+            this.LastnameTbx = new System.Windows.Forms.TextBox();
+            this.DateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.AddBtn = new System.Windows.Forms.Button();
             this.oibLbl = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.OIBTxb = new System.Windows.Forms.TextBox();
+            this.AllProjectsCbx = new System.Windows.Forms.CheckedListBox();
+            this.OccupationCmb = new System.Windows.Forms.ComboBox();
+            this.BackBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // nameLbl
@@ -59,44 +61,37 @@
             this.lastnameLbl.TabIndex = 1;
             this.lastnameLbl.Text = "Lastname:";
             // 
-            // nameTbx
+            // NameTbx
             // 
-            this.nameTbx.Location = new System.Drawing.Point(149, 21);
-            this.nameTbx.Name = "nameTbx";
-            this.nameTbx.Size = new System.Drawing.Size(190, 20);
-            this.nameTbx.TabIndex = 2;
+            this.NameTbx.Location = new System.Drawing.Point(149, 21);
+            this.NameTbx.Name = "NameTbx";
+            this.NameTbx.Size = new System.Drawing.Size(190, 20);
+            this.NameTbx.TabIndex = 2;
             // 
-            // lastnameTbx
+            // LastnameTbx
             // 
-            this.lastnameTbx.Location = new System.Drawing.Point(149, 62);
-            this.lastnameTbx.Name = "lastnameTbx";
-            this.lastnameTbx.Size = new System.Drawing.Size(190, 20);
-            this.lastnameTbx.TabIndex = 3;
+            this.LastnameTbx.Location = new System.Drawing.Point(149, 62);
+            this.LastnameTbx.Name = "LastnameTbx";
+            this.LastnameTbx.Size = new System.Drawing.Size(190, 20);
+            this.LastnameTbx.TabIndex = 3;
             // 
-            // dateTimePicker1
+            // DateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(62, 153);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(214, 20);
-            this.dateTimePicker1.TabIndex = 4;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(62, 196);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(214, 21);
-            this.comboBox1.TabIndex = 5;
+            this.DateTimePicker1.Location = new System.Drawing.Point(69, 152);
+            this.DateTimePicker1.Name = "DateTimePicker1";
+            this.DateTimePicker1.Size = new System.Drawing.Size(214, 20);
+            this.DateTimePicker1.TabIndex = 4;
             // 
             // AddBtn
             // 
             this.AddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddBtn.Location = new System.Drawing.Point(80, 248);
+            this.AddBtn.Location = new System.Drawing.Point(16, 415);
             this.AddBtn.Name = "AddBtn";
-            this.AddBtn.Size = new System.Drawing.Size(178, 79);
+            this.AddBtn.Size = new System.Drawing.Size(152, 86);
             this.AddBtn.TabIndex = 6;
             this.AddBtn.Text = "Add Employee";
             this.AddBtn.UseVisualStyleBackColor = true;
+            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
             // 
             // oibLbl
             // 
@@ -108,25 +103,55 @@
             this.oibLbl.TabIndex = 7;
             this.oibLbl.Text = "OIB:";
             // 
-            // textBox1
+            // OIBTxb
             // 
-            this.textBox1.Location = new System.Drawing.Point(149, 102);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(190, 20);
-            this.textBox1.TabIndex = 8;
+            this.OIBTxb.Location = new System.Drawing.Point(149, 102);
+            this.OIBTxb.Name = "OIBTxb";
+            this.OIBTxb.Size = new System.Drawing.Size(190, 20);
+            this.OIBTxb.TabIndex = 8;
+            // 
+            // AllProjectsCbx
+            // 
+            this.AllProjectsCbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AllProjectsCbx.FormattingEnabled = true;
+            this.AllProjectsCbx.Location = new System.Drawing.Point(69, 239);
+            this.AllProjectsCbx.Name = "AllProjectsCbx";
+            this.AllProjectsCbx.Size = new System.Drawing.Size(214, 156);
+            this.AllProjectsCbx.TabIndex = 9;
+            // 
+            // OccupationCmb
+            // 
+            this.OccupationCmb.FormattingEnabled = true;
+            this.OccupationCmb.Location = new System.Drawing.Point(69, 194);
+            this.OccupationCmb.Name = "OccupationCmb";
+            this.OccupationCmb.Size = new System.Drawing.Size(214, 21);
+            this.OccupationCmb.TabIndex = 10;
+            // 
+            // BackBtn
+            // 
+            this.BackBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BackBtn.Location = new System.Drawing.Point(193, 415);
+            this.BackBtn.Name = "BackBtn";
+            this.BackBtn.Size = new System.Drawing.Size(146, 86);
+            this.BackBtn.TabIndex = 11;
+            this.BackBtn.Text = "Back";
+            this.BackBtn.UseVisualStyleBackColor = true;
+            this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
             // 
             // Adding
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(360, 358);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(360, 533);
+            this.Controls.Add(this.BackBtn);
+            this.Controls.Add(this.OccupationCmb);
+            this.Controls.Add(this.AllProjectsCbx);
+            this.Controls.Add(this.OIBTxb);
             this.Controls.Add(this.oibLbl);
             this.Controls.Add(this.AddBtn);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.lastnameTbx);
-            this.Controls.Add(this.nameTbx);
+            this.Controls.Add(this.DateTimePicker1);
+            this.Controls.Add(this.LastnameTbx);
+            this.Controls.Add(this.NameTbx);
             this.Controls.Add(this.lastnameLbl);
             this.Controls.Add(this.nameLbl);
             this.Name = "Adding";
@@ -140,12 +165,14 @@
 
         private System.Windows.Forms.Label nameLbl;
         private System.Windows.Forms.Label lastnameLbl;
-        private System.Windows.Forms.TextBox nameTbx;
-        private System.Windows.Forms.TextBox lastnameTbx;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox NameTbx;
+        private System.Windows.Forms.TextBox LastnameTbx;
+        private System.Windows.Forms.DateTimePicker DateTimePicker1;
         private System.Windows.Forms.Button AddBtn;
         private System.Windows.Forms.Label oibLbl;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox OIBTxb;
+        private System.Windows.Forms.CheckedListBox AllProjectsCbx;
+        private System.Windows.Forms.ComboBox OccupationCmb;
+        private System.Windows.Forms.Button BackBtn;
     }
 }

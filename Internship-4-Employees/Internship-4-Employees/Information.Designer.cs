@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.everythingRtb = new System.Windows.Forms.RichTextBox();
+            this.EverythingRtb = new System.Windows.Forms.RichTextBox();
             this.ExitBtn = new System.Windows.Forms.Button();
             this.EditBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.projectsRtb = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
-            // everythingRtb
+            // EverythingRtb
             // 
-            this.everythingRtb.Location = new System.Drawing.Point(12, 12);
-            this.everythingRtb.Name = "everythingRtb";
-            this.everythingRtb.Size = new System.Drawing.Size(608, 417);
-            this.everythingRtb.TabIndex = 0;
-            this.everythingRtb.Text = "";
+            this.EverythingRtb.Location = new System.Drawing.Point(12, 12);
+            this.EverythingRtb.Name = "EverythingRtb";
+            this.EverythingRtb.Size = new System.Drawing.Size(608, 417);
+            this.EverythingRtb.TabIndex = 0;
+            this.EverythingRtb.Text = "";
             // 
             // ExitBtn
             // 
@@ -52,7 +52,7 @@
             this.ExitBtn.TabIndex = 1;
             this.ExitBtn.Text = "Exit";
             this.ExitBtn.UseVisualStyleBackColor = true;
-            this.ExitBtn.Click += new System.EventHandler(this.exitBtn_Click);
+            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
             // EditBtn
             // 
@@ -91,7 +91,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.EditBtn);
             this.Controls.Add(this.ExitBtn);
-            this.Controls.Add(this.everythingRtb);
+            this.Controls.Add(this.EverythingRtb);
             this.Name = "Information";
             this.Text = "Information";
             this.ResumeLayout(false);
@@ -101,7 +101,7 @@
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox everythingRtb;
+        private System.Windows.Forms.RichTextBox EverythingRtb;
         private System.Windows.Forms.Button ExitBtn;
         private System.Windows.Forms.Button EditBtn;
         private System.Windows.Forms.Label label1;

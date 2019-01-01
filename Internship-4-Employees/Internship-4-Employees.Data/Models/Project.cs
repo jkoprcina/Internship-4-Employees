@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Internship_4_Employees.Interface.Enumerators;
 
 namespace Internship_4_Employees.Data.Models
 {
@@ -22,5 +23,6 @@ namespace Internship_4_Employees.Data.Models
         public int WorkingHours { get; set; }
         public DateTime ProjectStart { get; set; }
         public DateTime ProjectFinish { get; set; }
+        public States State { get; set; }
     }
 }

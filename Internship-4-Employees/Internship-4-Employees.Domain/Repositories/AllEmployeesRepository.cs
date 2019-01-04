@@ -58,6 +58,8 @@ namespace Internship_4_Employees.Domain.Repositories
                     return e;
                 }
             }
+
+            return _employees.First();
         }
     }
 }

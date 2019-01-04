@@ -50,5 +50,11 @@ namespace Internship_4_Employees
         {
             this.Close();
         }
+
+        private void EditBtn_Click(object sender, EventArgs e)
+        {
+            var edit = new Edit(_listOfEmployees, _listOfProjects);
+            edit.ShowDialog();
+        }
     }
 }

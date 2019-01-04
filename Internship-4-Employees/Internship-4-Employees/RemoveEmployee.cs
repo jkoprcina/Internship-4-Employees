@@ -21,10 +21,10 @@ namespace Internship_4_Employees
             InitializeComponent();
             _listOfEmployees = listOfEmployees;
             _employees = _listOfEmployees.GetAllEmployees();
-            CleaningForm();
+            CleaningAndFillingForm();
         }
 
-        public void CleaningForm()
+        public void CleaningAndFillingForm()
         {
             UsersRtb.Clear();
             ChooseLbx.Items.Clear();
@@ -51,7 +51,7 @@ namespace Internship_4_Employees
                 return;
             }
             _listOfEmployees.Remove(oibOfPersonToRemove);
-            CleaningForm();
+            CleaningAndFillingForm();
         }
 
         private void BackBtn_Click(object sender, EventArgs e)

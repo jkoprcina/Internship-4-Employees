@@ -88,7 +88,7 @@
             this.EditBtn.Name = "EditBtn";
             this.EditBtn.Size = new System.Drawing.Size(265, 62);
             this.EditBtn.TabIndex = 4;
-            this.EditBtn.Text = "Edit Employee Info";
+            this.EditBtn.Text = "Edit Info";
             this.EditBtn.UseVisualStyleBackColor = true;
             this.EditBtn.Click += new System.EventHandler(this.EditBtn_Click);
             // 

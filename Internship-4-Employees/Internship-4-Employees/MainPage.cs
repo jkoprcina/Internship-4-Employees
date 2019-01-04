@@ -56,7 +56,7 @@ namespace Internship_4_Employees
 
         private void EditBtn_Click(object sender, EventArgs e)
         {
-            var edit = new Edit(listOfEmployees);
+            var edit = new Edit(listOfEmployees, listOfProjects);
             edit.ShowDialog();
         }
 

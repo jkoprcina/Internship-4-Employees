@@ -14,15 +14,11 @@ using Internship_4_Employees.Interface.Enumerators;
 
 namespace Internship_4_Employees
 {
-    public partial class Adding : Form
+    public partial class AddEmployee : Form
     {
-        private List<Employee> _employees;
-        private AllEmployees _listOfEmployees;
-        public Adding()
+        public AddEmployee(AllEmployees _listOfEmployees)
         {
             InitializeComponent();
-            _listOfEmployees = new AllEmployees();
-            _employees = _listOfEmployees.GetAllEmployees();
             CleaningForm();
         }
 
@@ -43,7 +39,7 @@ namespace Internship_4_Employees
             var lastname = "";
             var OIB = 0;
             var role = Roles.Programer;
-
+            var _employees = _listOfEmployees.GetAllEmployees();
             try
             {
                 name = NameTbx.Text;
@@ -87,7 +83,7 @@ namespace Internship_4_Employees
                 return;
             }
 
-            _employees.Add(new Employee(name, lastname, dateOfBirth, OIB, role));
+            _listOfEmployees.Add(new Employee(name, lastname, dateOfBirth, OIB, role));
 
             this.Close();
         }

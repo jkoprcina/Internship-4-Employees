@@ -12,11 +12,10 @@ using System.Windows.Forms;
 
 namespace Internship_4_Employees
 {
-    public partial class Removing : Form
+    public partial class RemoveEmployee : Form
     {
         private List<Employee> _employees;
-        private AllEmployees _listOfEmployees;
-        public Removing()
+        public RemoveEmployee(AllEmployees _listOfEmployees)
         {
             InitializeComponent();
             _listOfEmployees = new AllEmployees();

@@ -30,11 +30,13 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.AddBtn = new System.Windows.Forms.Button();
-            this.RemoveBtn = new System.Windows.Forms.Button();
+            this.AddEmployeeBtn = new System.Windows.Forms.Button();
+            this.RemoveEmployeeBtn = new System.Windows.Forms.Button();
             this.EditBtn = new System.Windows.Forms.Button();
             this.InformationBtn = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
+            this.AddProjectBtn = new System.Windows.Forms.Button();
+            this.RemoveProjectBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -57,32 +59,32 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "What do you wish to do?";
             // 
-            // AddBtn
+            // AddEmployeeBtn
             // 
-            this.AddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddBtn.Location = new System.Drawing.Point(75, 193);
-            this.AddBtn.Name = "AddBtn";
-            this.AddBtn.Size = new System.Drawing.Size(267, 62);
-            this.AddBtn.TabIndex = 2;
-            this.AddBtn.Text = "Add Employee";
-            this.AddBtn.UseVisualStyleBackColor = true;
-            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
+            this.AddEmployeeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddEmployeeBtn.Location = new System.Drawing.Point(75, 193);
+            this.AddEmployeeBtn.Name = "AddEmployeeBtn";
+            this.AddEmployeeBtn.Size = new System.Drawing.Size(267, 62);
+            this.AddEmployeeBtn.TabIndex = 2;
+            this.AddEmployeeBtn.Text = "Add Employee";
+            this.AddEmployeeBtn.UseVisualStyleBackColor = true;
+            this.AddEmployeeBtn.Click += new System.EventHandler(this.AddEmployeeBtn_Click);
             // 
-            // RemoveBtn
+            // RemoveEmployeeBtn
             // 
-            this.RemoveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RemoveBtn.Location = new System.Drawing.Point(75, 271);
-            this.RemoveBtn.Name = "RemoveBtn";
-            this.RemoveBtn.Size = new System.Drawing.Size(267, 62);
-            this.RemoveBtn.TabIndex = 3;
-            this.RemoveBtn.Text = "Remove Employee";
-            this.RemoveBtn.UseVisualStyleBackColor = true;
-            this.RemoveBtn.Click += new System.EventHandler(this.RemoveBtn_Click);
+            this.RemoveEmployeeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RemoveEmployeeBtn.Location = new System.Drawing.Point(75, 329);
+            this.RemoveEmployeeBtn.Name = "RemoveEmployeeBtn";
+            this.RemoveEmployeeBtn.Size = new System.Drawing.Size(267, 62);
+            this.RemoveEmployeeBtn.TabIndex = 3;
+            this.RemoveEmployeeBtn.Text = "Remove Employee";
+            this.RemoveEmployeeBtn.UseVisualStyleBackColor = true;
+            this.RemoveEmployeeBtn.Click += new System.EventHandler(this.RemoveEmployeeBtn_Click);
             // 
             // EditBtn
             // 
             this.EditBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EditBtn.Location = new System.Drawing.Point(75, 349);
+            this.EditBtn.Location = new System.Drawing.Point(75, 465);
             this.EditBtn.Name = "EditBtn";
             this.EditBtn.Size = new System.Drawing.Size(265, 62);
             this.EditBtn.TabIndex = 4;
@@ -93,7 +95,7 @@
             // InformationBtn
             // 
             this.InformationBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InformationBtn.Location = new System.Drawing.Point(75, 114);
+            this.InformationBtn.Location = new System.Drawing.Point(75, 125);
             this.InformationBtn.Name = "InformationBtn";
             this.InformationBtn.Size = new System.Drawing.Size(267, 62);
             this.InformationBtn.TabIndex = 5;
@@ -104,7 +106,7 @@
             // ExitBtn
             // 
             this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExitBtn.Location = new System.Drawing.Point(75, 427);
+            this.ExitBtn.Location = new System.Drawing.Point(75, 533);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(267, 62);
             this.ExitBtn.TabIndex = 6;
@@ -112,16 +114,40 @@
             this.ExitBtn.UseVisualStyleBackColor = true;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
+            // AddProjectBtn
+            // 
+            this.AddProjectBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddProjectBtn.Location = new System.Drawing.Point(75, 261);
+            this.AddProjectBtn.Name = "AddProjectBtn";
+            this.AddProjectBtn.Size = new System.Drawing.Size(267, 62);
+            this.AddProjectBtn.TabIndex = 7;
+            this.AddProjectBtn.Text = "Add Project";
+            this.AddProjectBtn.UseVisualStyleBackColor = true;
+            this.AddProjectBtn.Click += new System.EventHandler(this.AddProjectBtn_Click);
+            // 
+            // RemoveProjectBtn
+            // 
+            this.RemoveProjectBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RemoveProjectBtn.Location = new System.Drawing.Point(75, 397);
+            this.RemoveProjectBtn.Name = "RemoveProjectBtn";
+            this.RemoveProjectBtn.Size = new System.Drawing.Size(267, 62);
+            this.RemoveProjectBtn.TabIndex = 8;
+            this.RemoveProjectBtn.Text = "Remove Project";
+            this.RemoveProjectBtn.UseVisualStyleBackColor = true;
+            this.RemoveProjectBtn.Click += new System.EventHandler(this.RemoveProjectBtn_Click);
+            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(413, 548);
+            this.ClientSize = new System.Drawing.Size(413, 644);
+            this.Controls.Add(this.RemoveProjectBtn);
+            this.Controls.Add(this.AddProjectBtn);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.InformationBtn);
             this.Controls.Add(this.EditBtn);
-            this.Controls.Add(this.RemoveBtn);
-            this.Controls.Add(this.AddBtn);
+            this.Controls.Add(this.RemoveEmployeeBtn);
+            this.Controls.Add(this.AddEmployeeBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "MainPage";
@@ -135,11 +161,13 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button AddBtn;
-        private System.Windows.Forms.Button RemoveBtn;
+        private System.Windows.Forms.Button AddEmployeeBtn;
+        private System.Windows.Forms.Button RemoveEmployeeBtn;
         private System.Windows.Forms.Button EditBtn;
         private System.Windows.Forms.Button InformationBtn;
         private System.Windows.Forms.Button ExitBtn;
+        private System.Windows.Forms.Button AddProjectBtn;
+        private System.Windows.Forms.Button RemoveProjectBtn;
     }
 }
 

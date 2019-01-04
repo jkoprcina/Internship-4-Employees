@@ -13,37 +13,53 @@ namespace Internship_4_Employees
 {
     public partial class MainPage : Form
     {
-        public AllEmployees _listOfEmployees;
+        public AllEmployees listOfEmployees;
+        public AllProjects listOfProjects;
         public MainPage()
         {
             InitializeComponent();
-            _listOfEmployees = new AllEmployees();
+            listOfEmployees = new AllEmployees();
+            listOfEmployees.GetAllEmployees();
+            listOfProjects = new AllProjects();
+            listOfProjects.GetAllProjects();
         }
-
-        private void ExitBtn_Click(object sender, EventArgs e) => Application.Exit();
 
         private void InformationBtn_Click_1(object sender, EventArgs e)
         {
-            var info = new Information();
+            var info = new Information(listOfEmployees, listOfProjects);
             info.ShowDialog();
         }
 
-        private void AddBtn_Click(object sender, EventArgs e)
+        private void AddEmployeeBtn_Click(object sender, EventArgs e)
         {
-            var add = new Adding();
-            add.ShowDialog();
+            var addEmployee = new AddEmployee(listOfEmployees);
+            addEmployee.ShowDialog();
         }
 
-        private void RemoveBtn_Click(object sender, EventArgs e)
+        private void AddProjectBtn_Click(object sender, EventArgs e)
         {
-            var remove = new Removing();
-            remove.ShowDialog();
+            var addProject = new AddProject(listOfProjects, listOfEmployees);
+            addProject.ShowDialog();
+        }
+
+        private void RemoveEmployeeBtn_Click(object sender, EventArgs e)
+        {
+            var removeEmployee = new RemoveEmployee(listOfEmployees);
+            removeEmployee.ShowDialog();
+        }
+
+        private void RemoveProjectBtn_Click(object sender, EventArgs e)
+        {
+            var removeProject = new RemoveProject(listOfProjects);
+            removeProject.ShowDialog();
         }
 
         private void EditBtn_Click(object sender, EventArgs e)
         {
-            var edit = new Edit();
+            var edit = new Edit(listOfEmployees);
             edit.ShowDialog();
         }
+
+        private void ExitBtn_Click(object sender, EventArgs e) => Application.Exit();
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Internship_4_Employees
 {
-    partial class Removing
+    partial class RemoveEmployee
     {
         /// <summary>
         /// Required designer variable.

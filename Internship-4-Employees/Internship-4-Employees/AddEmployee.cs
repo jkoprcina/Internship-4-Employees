@@ -16,10 +16,12 @@ namespace Internship_4_Employees
 {
     public partial class AddEmployee : Form
     {
-        public AddEmployee(AllEmployees _listOfEmployees)
+        private AllEmployeesRepository _listOfEmployees;
+        public AddEmployee(AllEmployeesRepository listOfEmployees)
         {
             InitializeComponent();
             CleaningForm();
+            _listOfEmployees = listOfEmployees;
         }
 
         public void CleaningForm()
@@ -40,26 +42,22 @@ namespace Internship_4_Employees
             var OIB = 0;
             var role = Roles.Programer;
             var _employees = _listOfEmployees.GetAllEmployees();
+            var dateOfBirth = DateTime.Now;
+
+            
+            name = NameTbx.Text;
+            lastname = LastnameTbx.Text;
             try
             {
-                name = NameTbx.Text;
-                lastname = LastnameTbx.Text;
-                try
+                OIB = int.Parse(OIBTxb.Text);
+                foreach (var person in _employees)
                 {
-                    OIB = int.Parse(OIBTxb.ToString().Replace(" ", ""));
-                    foreach (var person in _employees)
+                    if (person.OIB == OIB)
                     {
-                        if (person.OIB == OIB)
-                        {
-                            MessageBox.Show("This OIB is already in use, go to 'Edit employee info' in the main menu if you wish to Edit instead of Add.");
-                            return;
-                        }
+                        MessageBox.Show(
+                            "This OIB is already in use, go to 'Edit employee info' in the main menu if you wish to Edit instead of Add.");
+                        return;
                     }
-                }
-                catch
-                {
-                    MessageBox.Show("The OIB should not contain letters.");
-                    return;
                 }
 
                 if (OccupationCmb.SelectedIndex < 0)
@@ -68,23 +66,24 @@ namespace Internship_4_Employees
                     return;
                 }
                 else
-                    role = (Roles)OccupationCmb.SelectedValue;
+                {
+                    role = (Roles) OccupationCmb.SelectedValue;
+                    MessageBox.Show(role.ToString());
+                }
+
+                dateOfBirth = DateTimePicker1.Value;
+                if (DateTime.Now.Year - dateOfBirth.Year < 19)
+                {
+                    MessageBox.Show("Employee must be over the age of 18.");
+                    return;
+                }
             }
             catch
             {
-                MessageBox.Show("Uknown error, try again!");
-                return;
-            }
-
-            var dateOfBirth = DateTimePicker1.Value;
-            if (DateTime.Now.Year - dateOfBirth.Year < 19)
-            {
-                MessageBox.Show("Employee must be over the age of 18.");
-                return;
+                MessageBox.Show("You don't know why it throws an error, somewhere in role picking part probably");
             }
 
             _listOfEmployees.Add(new Employee(name, lastname, dateOfBirth, OIB, role));
-
             this.Close();
         }
 

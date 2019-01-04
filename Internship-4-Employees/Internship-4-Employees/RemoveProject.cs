@@ -13,7 +13,7 @@ namespace Internship_4_Employees
 {
     public partial class RemoveProject : Form
     {
-        public RemoveProject(AllProjects listOfProjects)
+        public RemoveProject(AllProjectsRepository listOfProjects)
         {
             InitializeComponent();
         }

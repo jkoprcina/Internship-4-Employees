@@ -7,11 +7,11 @@ using Internship_4_Employees.Data.Models;
 
 namespace Internship_4_Employees.Domain.Repositories
 {
-    public class AllProjects
+    public class AllProjectsRepository
     {
         private List<Project> _projects;
         public List<Employee> listOfEmployees;
-        public AllProjects()
+        public AllProjectsRepository()
         {
             FakeData();
         }
@@ -26,5 +26,10 @@ namespace Internship_4_Employees.Domain.Repositories
         }
 
         public List<Project> GetAllProjects() => _projects;
+
+        public void Add(Project projectToAdd)
+        {
+            _projects.Add(projectToAdd);
+        }
     }
 }

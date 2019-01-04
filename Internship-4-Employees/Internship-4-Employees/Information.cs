@@ -15,23 +15,35 @@ namespace Internship_4_Employees
     public partial class Information : Form
     {
         private List<Employee> _employees;
-        public Information(AllEmployees _listOfEmployees, AllProjects _listOfProjects) 
+        private AllEmployeesRepository _listOfEmployees;
+        private List<Project> _projects;
+        private AllProjectsRepository _listOfProjects;
+        public Information(AllEmployeesRepository listOfEmployees, AllProjectsRepository listOfProjects) 
         {
             InitializeComponent();
-            CleaningForm();
-            _listOfEmployees = new AllEmployees();
+            _listOfEmployees = listOfEmployees;
             _employees = _listOfEmployees.GetAllEmployees();
+            _listOfProjects = listOfProjects;
+            _projects = _listOfProjects.GetAllProjects();
+            CleaningAndFillingForm();
+
+        }
+
+        public void CleaningAndFillingForm()
+        {
+            AllProjectsLbx.Items.Clear();
+            AllEmployeesRtb.Clear();
             AllEmployeesRtb.Text = "";
+            AllProjectsLbx.Items.Clear();
             foreach (var e in _employees)
             {
                 AllEmployeesRtb.Text += e.ToString();
             }
-        }
+            foreach (var p in _projects)
+            {
+                AllProjectsLbx.Items.Add(p.Name);
+            }
 
-        public void CleaningForm()
-        {
-            AllProjectsLbx.Items.Clear();
-            AllEmployeesRtb.Clear();
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)

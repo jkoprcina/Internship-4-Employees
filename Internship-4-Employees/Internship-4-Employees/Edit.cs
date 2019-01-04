@@ -13,7 +13,7 @@ namespace Internship_4_Employees
 {
     public partial class Edit : Form
     {
-        public Edit(AllEmployees _listOfEmployees)
+        public Edit(AllEmployeesRepository _listOfEmployees)
         {
             InitializeComponent();
         }

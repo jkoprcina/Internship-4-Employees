@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Internship-4-Employees.Presentation", "Internship-4-Employees\Internship-4-Employees.Presentation.csproj", "{002B1A01-BFF4-4079-8085-C3B24C3DE5EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Internship-4-Employees.Interface", "Internship-4-Employees.Interface\Internship-4-Employees.Interface.csproj", "{CD77B800-F1A2-4F64-A9C8-2C45E24E39F4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Internship-4-Employees.Infrastructure", "Internship-4-Employees.Interface\Internship-4-Employees.Infrastructure.csproj", "{CD77B800-F1A2-4F64-A9C8-2C45E24E39F4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Internship-4-Employees.Data", "Internship-4-Employees.Data\Internship-4-Employees.Data.csproj", "{1B443E74-9BB0-4537-B036-7306AF544475}"
 EndProject

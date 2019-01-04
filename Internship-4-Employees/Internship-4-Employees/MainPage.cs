@@ -13,14 +13,14 @@ namespace Internship_4_Employees
 {
     public partial class MainPage : Form
     {
-        public AllEmployees listOfEmployees;
-        public AllProjects listOfProjects;
+        public AllEmployeesRepository listOfEmployees;
+        public AllProjectsRepository listOfProjects;
         public MainPage()
         {
             InitializeComponent();
-            listOfEmployees = new AllEmployees();
+            listOfEmployees = new AllEmployeesRepository();
             listOfEmployees.GetAllEmployees();
-            listOfProjects = new AllProjects();
+            listOfProjects = new AllProjectsRepository();
             listOfProjects.GetAllProjects();
         }
 

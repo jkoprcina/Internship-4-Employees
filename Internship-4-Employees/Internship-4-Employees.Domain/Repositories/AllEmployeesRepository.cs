@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Internship_4_Employees.Domain.Repositories
 {
-    public class AllEmployees
+    public class AllEmployeesRepository
     {
         private List<Employee> _employees;
-        public AllEmployees()
+        public AllEmployeesRepository()
         {
             FakeData();
         }
@@ -27,6 +27,11 @@ namespace Internship_4_Employees.Domain.Repositories
 
         public List<Employee> GetAllEmployees() => _employees;
 
+        public void Add(Employee employeeToAdd)
+        {
+            _employees.Add(employeeToAdd);
+        }
+
         public void Edit(Employee personToEdit)
         {
 
@@ -34,12 +39,23 @@ namespace Internship_4_Employees.Domain.Repositories
 
         public void Remove(int personToRemove)
         {
-            foreach (var e in GetAllEmployees())
+            foreach (var e in _employees)
             {
                 if (e.OIB == personToRemove)
                 {
                     _employees.Remove(e);
                     break;
+                }
+            }
+        }
+
+        public Employee Get(int personToReturnOib)
+        {
+            foreach (var e in _employees)
+            {
+                if (e.OIB == personToReturnOib)
+                {
+                    return e;
                 }
             }
         }

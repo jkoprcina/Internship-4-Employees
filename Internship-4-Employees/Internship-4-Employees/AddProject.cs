@@ -15,15 +15,23 @@ namespace Internship_4_Employees
 {
     public partial class AddProject : Form
     {
-        public AddProject(AllProjects listOfProjects, AllEmployees listOfEmployees)
+        private AllEmployeesRepository _listOfEmployees;
+        private AllProjectsRepository _listOfProjects;
+        private List<Employee> _employees;
+        private List<Project> _projects;
+        public AddProject(AllProjectsRepository listOfProjects, AllEmployeesRepository listOfEmployees)
         {
             InitializeComponent();
-            var _emloyees = listOfEmployees.GetAllEmployees();
+            _employees = listOfEmployees.GetAllEmployees();
+            _projects = listOfProjects.GetAllProjects();
             EmployeeCbx.Items.Clear();
-            foreach (var e in _emloyees)
+            foreach (var e in _employees)
             {
                 EmployeeCbx.Items.Add($"{e.Name} {e.Lastname} {e.OIB}\n");
             }
+
+            _listOfProjects = listOfProjects;
+            _listOfEmployees = listOfEmployees;
         }
 
         private void AddProjectBtn_Click(object sender, EventArgs e)
@@ -32,9 +40,8 @@ namespace Internship_4_Employees
             var hours = 0;
             var start = DateTime.Now;
             var finish = DateTime.Now;
-            var listOfEmployees = new List<Employee>();
-            var _projects = listOfProjects.GetAllProjects();
-
+            var listOfEmployeesInProject = new List<Employee>();
+            
             try
             {
                 foreach (var p in _projects)
@@ -61,9 +68,13 @@ namespace Internship_4_Employees
                     return;
                 }
 
+                //the OIB will always be in the second place of the array because we set up the checkbox that way 
                 foreach (var person in EmployeeCbx.CheckedItems)
                 {
-
+                    var oneEmployee = person.ToString();
+                    string[] infoOneEmployee = oneEmployee.Split(' ');
+                    var employee = _listOfEmployees.Get(int.Parse(infoOneEmployee[2]));
+                    listOfEmployeesInProject.Add(employee);
                 }
             }
             catch
@@ -71,6 +82,9 @@ namespace Internship_4_Employees
                 MessageBox.Show("Wrong input");
                 return;
             }
+
+            _listOfProjects.Add(new Project(name, listOfEmployeesInProject, hours, start, finish));
+            this.Close();
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)

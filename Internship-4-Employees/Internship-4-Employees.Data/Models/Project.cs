@@ -9,20 +9,32 @@ namespace Internship_4_Employees.Data.Models
 {
     public class Project
     {
-        public Project(string name, List<Employee> asigned, int workingHours, DateTime projectStart, DateTime projectFinish)
+        public Project(string name, List<Employee> assigned, DateTime projectStart, DateTime projectFinish, States state, int? workingHours = null)
         {
             Name = name;
-            Asigned = asigned;
+            Assigned = assigned;
             WorkingHours = workingHours;
             ProjectStart = projectStart;
             ProjectFinish = projectFinish;
+            State = state;
         }
 
         public string Name { get; set; }
-        public List<Employee> Asigned { get; set; }
-        public int WorkingHours { get; set; }
+        public List<Employee> Assigned { get; set; }
+        public int? WorkingHours { get; set; }
         public DateTime ProjectStart { get; set; }
         public DateTime ProjectFinish { get; set; }
         public States State { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Name}\t{State}\n";
+        }
+
+        public void AddAssigned(Employee employee)
+        {
+            if(!Assigned.Contains(employee))
+                Assigned.Add(employee);
+        }
     }
 }

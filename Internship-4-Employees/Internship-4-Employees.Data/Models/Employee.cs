@@ -16,6 +16,7 @@ namespace Internship_4_Employees.Data.Models
             DateOfBirth = dateOfBirth;
             OIB = oIB;
             Role = role;
+            Projects = new List<Project>();
         }
 
         public string Name { get; set; }
@@ -27,7 +28,36 @@ namespace Internship_4_Employees.Data.Models
 
         public override string ToString()
         {
-            return $"Name: {Name} {Lastname} Date of birth: {DateOfBirth} OIB: {OIB} Occupation: {Role}\n";
+            return $"Name: {Name} {Lastname} OIB:\t{OIB}\n";
+        }
+
+        public string AllInfo()
+        {
+            var numberOfFinishedProjects = 0;
+            var numberOfOngoingProjects = 0;
+            var numberOfPlannedProjects = 0;
+            int? weeklyWorkTime = 0;
+
+            foreach (var p in Projects)
+            {
+                if (p.State == States.Finished)
+                    numberOfFinishedProjects++;
+                else if (p.State == States.Ongoing)
+                    numberOfOngoingProjects++;
+                else
+                    numberOfPlannedProjects++;
+
+                if (p.WorkingHours != null)
+                    weeklyWorkTime += p.WorkingHours;
+            }
+
+            return $"Name: {Name} {Lastname}\n" +
+                   $"Date of birth: {DateOfBirth.ToShortDateString()}\n" +
+                   $"OIB: {OIB}\n" +
+                   $"Occupation: {Role}\n" +
+                   $"Number of finished Projects: {numberOfFinishedProjects}\n" +
+                   $"Number of ongoing Projects: {numberOfOngoingProjects}\n" +
+                   $"Number of planned Projects: {numberOfPlannedProjects}\n";
         }
     }
 }

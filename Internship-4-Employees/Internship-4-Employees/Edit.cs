@@ -32,17 +32,23 @@ namespace Internship_4_Employees
         {
             AllProjectsLbx.Items.Clear();
             AllEmployeesLbx.Items.Clear();
-
-            foreach (var e in _projects)
-            {
-                AllProjectsLbx.Items.Add($"{e.Name} {e.State}\n");
-            }
+            foreach (var p in _projects)
+                AllProjectsLbx.Items.Add(p.ToString());
             foreach (var e in _employees)
-            {
-                AllEmployeesLbx.Items.Add($"{e.Name} {e.Lastname} {e.OIB}\n");
-            }
+                AllEmployeesLbx.Items.Add(e.ToString());
         }
 
         private void ExitBtn_Click(object sender, EventArgs e) => Close();
+
+        private void EditEmployeeBtn_Click(object sender, EventArgs e)
+        {
+            var edit = new AddEmployee(_listOfEmployees, _listOfProjects);
+            edit.ShowDialog();
+        }
+
+        private void EditProjectBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

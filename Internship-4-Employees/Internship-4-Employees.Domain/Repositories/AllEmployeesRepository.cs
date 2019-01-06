@@ -54,12 +54,9 @@ namespace Internship_4_Employees.Domain.Repositories
             foreach (var e in _employees)
             {
                 if (e.OIB == personToReturnOib)
-                {
                     return e;
-                }
             }
-
-            return _employees.First();
+            return null;
         }
     }
 }

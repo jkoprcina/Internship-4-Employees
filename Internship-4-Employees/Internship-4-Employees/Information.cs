@@ -26,35 +26,55 @@ namespace Internship_4_Employees
             _listOfProjects = listOfProjects;
             _projects = _listOfProjects.GetAllProjects();
             CleaningAndFillingForm();
-
         }
 
         public void CleaningAndFillingForm()
         {
             AllProjectsLbx.Items.Clear();
-            AllEmployeesRtb.Clear();
-            AllEmployeesRtb.Text = "";
+            AllEmployeesLbx.Items.Clear();
             AllProjectsLbx.Items.Clear();
             foreach (var e in _employees)
-            {
-                AllEmployeesRtb.Text += e.ToString();
-            }
+                AllEmployeesLbx.Items.Add(e.ToString());
             foreach (var p in _projects)
-            {
-                AllProjectsLbx.Items.Add(p.Name);
-            }
-
+                AllProjectsLbx.Items.Add(p.ToString());
         }
 
-        private void ExitBtn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        private void ExitBtn_Click(object sender, EventArgs e) => this.Close();
 
         private void EditBtn_Click(object sender, EventArgs e)
         {
             var edit = new Edit(_listOfEmployees, _listOfProjects);
             edit.ShowDialog();
+        }
+
+        private void ProjectDetailsBtn_Click(object sender, EventArgs e)
+        {
+            if (AllProjectsLbx.SelectedIndex > -1)
+            {
+                string[] temp = AllProjectsLbx.SelectedItem.ToString().Split('\t');
+                var projectDetails = new ProjectDetails(_listOfProjects.Get(temp[0]));
+                projectDetails.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please choose the project you wish to view");
+                return;
+            }
+        }
+
+        private void EmployeeDetailsBtn_Click(object sender, EventArgs e)
+        {
+            if (AllEmployeesLbx.SelectedIndex > -1)
+            {
+                string[] temp = AllEmployeesLbx.SelectedItem.ToString().Split('\t');
+                var projectDetails = new EmployeeDetails(_listOfEmployees.Get(int.Parse(temp[1])));
+                projectDetails.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please choose the project you wish to view");
+                return;
+            }
         }
     }
 }

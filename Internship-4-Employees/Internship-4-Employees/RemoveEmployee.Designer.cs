@@ -60,7 +60,7 @@
             // 
             this.UsersRtb.Location = new System.Drawing.Point(12, 12);
             this.UsersRtb.Name = "UsersRtb";
-            this.UsersRtb.Size = new System.Drawing.Size(434, 381);
+            this.UsersRtb.Size = new System.Drawing.Size(422, 381);
             this.UsersRtb.TabIndex = 3;
             this.UsersRtb.Text = "";
             // 
@@ -83,7 +83,7 @@
             this.BackBtn.UseVisualStyleBackColor = true;
             this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
             // 
-            // Removing
+            // RemoveEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -93,7 +93,7 @@
             this.Controls.Add(this.RemoveBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.UsersRtb);
-            this.Name = "Removing";
+            this.Name = "RemoveEmployee";
             this.Text = "Removingcs";
             this.ResumeLayout(false);
             this.PerformLayout();

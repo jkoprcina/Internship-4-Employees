@@ -54,6 +54,7 @@
             this.RemoveProjectBtn.TabIndex = 1;
             this.RemoveProjectBtn.Text = "Remove";
             this.RemoveProjectBtn.UseVisualStyleBackColor = true;
+            this.RemoveProjectBtn.Click += new System.EventHandler(this.RemoveProjectBtn_Click);
             // 
             // ProjectDetailsBtn
             // 
@@ -64,6 +65,7 @@
             this.ProjectDetailsBtn.TabIndex = 2;
             this.ProjectDetailsBtn.Text = "Project Details";
             this.ProjectDetailsBtn.UseVisualStyleBackColor = true;
+            this.ProjectDetailsBtn.Click += new System.EventHandler(this.ProjectDetailsBtn_Click);
             // 
             // AllProjectsLbx
             // 

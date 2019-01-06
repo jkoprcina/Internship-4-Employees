@@ -17,22 +17,30 @@ namespace Internship_4_Employees
     public partial class AddEmployee : Form
     {
         private AllEmployeesRepository _listOfEmployees;
-        public AddEmployee(AllEmployeesRepository listOfEmployees)
+        private AllProjectsRepository _listOfProjects;
+        private List<Employee> _employees;
+        private List<Project> _projects;
+        public AddEmployee(AllEmployeesRepository listOfEmployees, AllProjectsRepository listOfProjects)
         {
             InitializeComponent();
-            CleaningForm();
             _listOfEmployees = listOfEmployees;
+            _listOfProjects = listOfProjects;
+            _employees = listOfEmployees.GetAllEmployees();
+            _projects = listOfProjects.GetAllProjects();
+            CleaningAndFillingForm();
         }
 
-        public void CleaningForm()
+        public void CleaningAndFillingForm()
         {
             NameTbx.Clear();
             LastnameTbx.Clear();
             OIBTxb.Clear();
             AllProjectsCbx.Items.Clear();
+            OccupationCmb.Items.Clear();
             foreach (var r in Enum.GetValues(typeof(Roles)))
                 OccupationCmb.Items.Add(r);
-
+            foreach (var p in _projects)
+                AllProjectsCbx.Items.Add(p.ToString());
         }
 
         private void AddBtn_Click(object sender, EventArgs e)
@@ -41,9 +49,7 @@ namespace Internship_4_Employees
             var lastname = "";
             var OIB = 0;
             var role = Roles.Programer;
-            var _employees = _listOfEmployees.GetAllEmployees();
             var dateOfBirth = DateTime.Now;
-
             
             name = NameTbx.Text;
             lastname = LastnameTbx.Text;
@@ -60,21 +66,21 @@ namespace Internship_4_Employees
                     }
                 }
 
-                if (OccupationCmb.SelectedIndex < 0)
-                {
-                    MessageBox.Show("You need to select an occuption.");
-                    return;
-                }
-                else
-                {
-                    role = (Roles) OccupationCmb.SelectedValue;
-                    MessageBox.Show(role.ToString());
-                }
-
-                dateOfBirth = DateTimePicker1.Value;
+                dateOfBirth = DateTimePicker1.Value.Date;
                 if (DateTime.Now.Year - dateOfBirth.Year < 19)
                 {
                     MessageBox.Show("Employee must be over the age of 18.");
+                    return;
+                }
+
+                if (OccupationCmb.SelectedIndex > -1)
+                {
+                    role = (Roles)OccupationCmb.SelectedValue;
+                    MessageBox.Show(role.ToString());
+                }
+                else
+                {
+                    MessageBox.Show("You need to select an occuption.");
                     return;
                 }
             }
@@ -83,7 +89,21 @@ namespace Internship_4_Employees
                 MessageBox.Show("You don't know why it throws an error, somewhere in role picking part probably");
             }
 
-            _listOfEmployees.Add(new Employee(name, lastname, dateOfBirth, OIB, role));
+            var employee = new Employee(name, lastname, dateOfBirth, OIB, role);
+            
+            for (int x = 0; x < AllProjectsCbx.CheckedItems.Count; x++)
+            {
+                string[] temp = AllProjectsCbx.CheckedItems[x].ToString().Split('\t');
+                var project = _listOfProjects.Get(temp[0]);
+                employee.Projects.Add(project);
+                foreach (var p in _projects)
+                {
+                    if (p == project)
+                        p.AddAssigned(employee);
+                }
+            }
+
+            _listOfEmployees.Add(employee);
             this.Close();
         }
 

@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.editBtn = new System.Windows.Forms.Button();
+            this.EditProjectBtn = new System.Windows.Forms.Button();
             this.AllEmployeesLbx = new System.Windows.Forms.ListBox();
             this.AllProjectsLbx = new System.Windows.Forms.ListBox();
             this.ExitBtn = new System.Windows.Forms.Button();
             this.ListEmployeesLbl = new System.Windows.Forms.Label();
             this.ListProjectsLbl = new System.Windows.Forms.Label();
+            this.EditEmployeeBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -47,15 +48,16 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Click on the person or project you wish to edit";
             // 
-            // editBtn
+            // EditProjectBtn
             // 
-            this.editBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editBtn.Location = new System.Drawing.Point(70, 438);
-            this.editBtn.Name = "editBtn";
-            this.editBtn.Size = new System.Drawing.Size(151, 40);
-            this.editBtn.TabIndex = 2;
-            this.editBtn.Text = "Edit";
-            this.editBtn.UseVisualStyleBackColor = true;
+            this.EditProjectBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditProjectBtn.Location = new System.Drawing.Point(149, 438);
+            this.EditProjectBtn.Name = "EditProjectBtn";
+            this.EditProjectBtn.Size = new System.Drawing.Size(151, 40);
+            this.EditProjectBtn.TabIndex = 2;
+            this.EditProjectBtn.Text = "Edit Project";
+            this.EditProjectBtn.UseVisualStyleBackColor = true;
+            this.EditProjectBtn.Click += new System.EventHandler(this.EditProjectBtn_Click);
             // 
             // AllEmployeesLbx
             // 
@@ -76,7 +78,7 @@
             // ExitBtn
             // 
             this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExitBtn.Location = new System.Drawing.Point(237, 438);
+            this.ExitBtn.Location = new System.Drawing.Point(306, 438);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(140, 40);
             this.ExitBtn.TabIndex = 5;
@@ -87,32 +89,46 @@
             // ListEmployeesLbl
             // 
             this.ListEmployeesLbl.AutoSize = true;
-            this.ListEmployeesLbl.Location = new System.Drawing.Point(67, 36);
+            this.ListEmployeesLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListEmployeesLbl.Location = new System.Drawing.Point(43, 36);
             this.ListEmployeesLbl.Name = "ListEmployeesLbl";
-            this.ListEmployeesLbl.Size = new System.Drawing.Size(101, 13);
+            this.ListEmployeesLbl.Size = new System.Drawing.Size(151, 20);
             this.ListEmployeesLbl.TabIndex = 6;
             this.ListEmployeesLbl.Text = "List of all employees";
             // 
             // ListProjectsLbl
             // 
             this.ListProjectsLbl.AutoSize = true;
-            this.ListProjectsLbl.Location = new System.Drawing.Point(289, 36);
+            this.ListProjectsLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListProjectsLbl.Location = new System.Drawing.Point(273, 36);
             this.ListProjectsLbl.Name = "ListProjectsLbl";
-            this.ListProjectsLbl.Size = new System.Drawing.Size(88, 13);
+            this.ListProjectsLbl.Size = new System.Drawing.Size(131, 20);
             this.ListProjectsLbl.TabIndex = 7;
             this.ListProjectsLbl.Text = "List of all projects";
+            // 
+            // EditEmployeeBtn
+            // 
+            this.EditEmployeeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditEmployeeBtn.Location = new System.Drawing.Point(12, 438);
+            this.EditEmployeeBtn.Name = "EditEmployeeBtn";
+            this.EditEmployeeBtn.Size = new System.Drawing.Size(131, 40);
+            this.EditEmployeeBtn.TabIndex = 8;
+            this.EditEmployeeBtn.Text = "Edit Employee";
+            this.EditEmployeeBtn.UseVisualStyleBackColor = true;
+            this.EditEmployeeBtn.Click += new System.EventHandler(this.EditEmployeeBtn_Click);
             // 
             // Edit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(458, 490);
+            this.Controls.Add(this.EditEmployeeBtn);
             this.Controls.Add(this.ListProjectsLbl);
             this.Controls.Add(this.ListEmployeesLbl);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.AllProjectsLbx);
             this.Controls.Add(this.AllEmployeesLbx);
-            this.Controls.Add(this.editBtn);
+            this.Controls.Add(this.EditProjectBtn);
             this.Controls.Add(this.label1);
             this.Name = "Edit";
             this.Text = "Edit";
@@ -123,11 +139,12 @@
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button editBtn;
+        private System.Windows.Forms.Button EditProjectBtn;
         private System.Windows.Forms.ListBox AllProjectsLbx;
         private System.Windows.Forms.Button ExitBtn;
         private System.Windows.Forms.ListBox AllEmployeesLbx;
         private System.Windows.Forms.Label ListEmployeesLbl;
         private System.Windows.Forms.Label ListProjectsLbl;
+        private System.Windows.Forms.Button EditEmployeeBtn;
     }
 }

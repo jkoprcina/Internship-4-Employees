@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Internship_4_Employees.Data.Models;
 using Internship_4_Employees.Domain.Repositories;
+using Internship_4_Employees.Interface.Enumerators;
 
 namespace Internship_4_Employees
 {
@@ -22,24 +23,29 @@ namespace Internship_4_Employees
         public AddProject(AllProjectsRepository listOfProjects, AllEmployeesRepository listOfEmployees)
         {
             InitializeComponent();
-            _employees = listOfEmployees.GetAllEmployees();
-            _projects = listOfProjects.GetAllProjects();
+            _listOfProjects = listOfProjects;
+            _listOfEmployees = listOfEmployees;
+            _projects = _listOfProjects.GetAllProjects();
+            _employees = _listOfEmployees.GetAllEmployees();
+            CleaningAndFillingForm();
+        }
+
+        private void CleaningAndFillingForm()
+        {
             EmployeeCbx.Items.Clear();
             foreach (var e in _employees)
             {
-                EmployeeCbx.Items.Add($"{e.Name} {e.Lastname} {e.OIB}\n");
+                EmployeeCbx.Items.Add($"{e.Name}\t{e.Lastname}\t{e.OIB}\n");
             }
-
-            _listOfProjects = listOfProjects;
-            _listOfEmployees = listOfEmployees;
         }
 
         private void AddProjectBtn_Click(object sender, EventArgs e)
         {
-            var name = "";
-            var hours = 0;
+            var name = ProjectNameTbx.Text;
+            int? hours = null;
             var start = DateTime.Now;
             var finish = DateTime.Now;
+            var state = States.Ongoing;
             var listOfEmployeesInProject = new List<Employee>();
             
             try
@@ -52,7 +58,8 @@ namespace Internship_4_Employees
                         return;
                     }
                 }
-                hours = int.Parse(HoursTbx.Text);
+                if(HoursTbx.Text != "")
+                    hours = int.Parse(HoursTbx.Text);
                 if (hours < 0)
                 {
                     MessageBox.Show(
@@ -60,7 +67,7 @@ namespace Internship_4_Employees
                     return;
                 }
 
-                start = StartDtp.Value;
+                start = StartDtp.Value.Date;
                 finish = FinishingDtp.Value;
                 if (finish <= start)
                 {
@@ -72,9 +79,15 @@ namespace Internship_4_Employees
                 foreach (var person in EmployeeCbx.CheckedItems)
                 {
                     var oneEmployee = person.ToString();
-                    string[] infoOneEmployee = oneEmployee.Split(' ');
+                    string[] infoOneEmployee = oneEmployee.Split('\t');
                     var employee = _listOfEmployees.Get(int.Parse(infoOneEmployee[2]));
                     listOfEmployeesInProject.Add(employee);
+                }
+
+                if (listOfEmployeesInProject.Count < 1)
+                {
+                    MessageBox.Show("You need to choose at least one project for the employee to work on");
+                    return;
                 }
             }
             catch
@@ -83,7 +96,12 @@ namespace Internship_4_Employees
                 return;
             }
 
-            _listOfProjects.Add(new Project(name, listOfEmployeesInProject, hours, start, finish));
+            if (start > DateTime.Now)
+                state = States.Planned;
+            else if (finish < DateTime.Now)
+                state = States.Finished;
+
+            _listOfProjects.Add(new Project(name, listOfEmployeesInProject, start, finish, state, hours));
             this.Close();
         }
 

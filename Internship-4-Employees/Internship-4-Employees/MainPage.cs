@@ -32,7 +32,7 @@ namespace Internship_4_Employees
 
         private void AddEmployeeBtn_Click(object sender, EventArgs e)
         {
-            var addEmployee = new AddEmployee(listOfEmployees);
+            var addEmployee = new AddEmployee(listOfEmployees, listOfProjects);
             addEmployee.ShowDialog();
         }
 

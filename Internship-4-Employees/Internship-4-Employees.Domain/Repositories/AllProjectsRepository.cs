@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Internship_4_Employees.Data.Models;
+using Internship_4_Employees.Interface.Enumerators;
 
 namespace Internship_4_Employees.Domain.Repositories
 {
     public class AllProjectsRepository
     {
         private List<Project> _projects;
-        public List<Employee> listOfEmployees;
+        private AllEmployeesRepository _listOfEmployees = new AllEmployeesRepository();
+        private List<Employee> _employees;
         public AllProjectsRepository()
         {
             FakeData();
@@ -18,10 +20,11 @@ namespace Internship_4_Employees.Domain.Repositories
 
         private void FakeData()
         {
+            _employees = _listOfEmployees.GetAllEmployees();
             _projects = new List<Project>()
             {
-                new Project("Google Glasses", listOfEmployees, 10,new DateTime(2016, 1, 18), new DateTime(2017, 1, 18)),
-                new Project("Jarvis", listOfEmployees, 12, new DateTime(2015, 1, 18), new DateTime(2020, 1, 18))
+                new Project("Google Glasses", _employees, new DateTime(2016, 1, 18), new DateTime(2017, 1, 18), States.Ongoing, 10),
+                new Project("Jarvis", _employees, new DateTime(2015, 1, 18), new DateTime(2020, 1, 18), States.Ongoing, 12)
             };
         }
 
@@ -30,6 +33,28 @@ namespace Internship_4_Employees.Domain.Repositories
         public void Add(Project projectToAdd)
         {
             _projects.Add(projectToAdd);
+        }
+
+        public void Remove(string nameOfProjectToRemove)
+        {
+            foreach (var p in _projects)
+            {
+                if (p.Name == nameOfProjectToRemove)
+                {
+                    _projects.Remove(p);
+                    break;
+                }
+            }
+        }
+
+        public Project Get(string nameOfProjectToGet)
+        {
+            foreach (var p in _projects)
+            {
+                if (p.Name == nameOfProjectToGet)
+                    return p;
+            }
+            return null;
         }
     }
 }

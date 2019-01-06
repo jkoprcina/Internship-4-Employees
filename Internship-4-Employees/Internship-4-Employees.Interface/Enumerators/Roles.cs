@@ -9,6 +9,8 @@ namespace Internship_4_Employees.Interface.Enumerators
     public enum Roles
     {
         Programer = 1,
-        Designer = 2
+        Designer = 2,
+        Accountant = 3,
+        Manager = 4
     }
 }

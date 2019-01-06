@@ -29,34 +29,35 @@ namespace Internship_4_Employees
             UsersRtb.Clear();
             ChooseLbx.Items.Clear();
             foreach (var e in _employees)
-            {
                 UsersRtb.Text += e.ToString();
-            }
             foreach (var e in _employees)
-            {
                 ChooseLbx.Items.Add(e.OIB + "\n");
-            }
         }
 
         private void RemoveBtn_Click(object sender, EventArgs e)
         {
-            int oibOfPersonToRemove;
             if (ChooseLbx.SelectedIndex > -1)
-            {
-                oibOfPersonToRemove = int.Parse(ChooseLbx.SelectedItem.ToString());
-            }
+                _listOfEmployees.Remove(int.Parse(ChooseLbx.SelectedItem.ToString()));
             else
             {
                 MessageBox.Show("First choose who you wish to remove, then click the button");
                 return;
             }
-            _listOfEmployees.Remove(oibOfPersonToRemove);
+
+            string message = "Are you sure you wish to remove this employee?";
+            string caption = "Asking approval";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result;
+
+            result = MessageBox.Show(message, caption, buttons);
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
             CleaningAndFillingForm();
         }
 
-        private void BackBtn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        private void BackBtn_Click(object sender, EventArgs e) => this.Close();
     }
 }

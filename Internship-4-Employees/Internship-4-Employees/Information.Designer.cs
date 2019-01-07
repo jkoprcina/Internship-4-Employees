@@ -81,7 +81,7 @@
             // ProjectDetailsBtn
             // 
             this.ProjectDetailsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProjectDetailsBtn.Location = new System.Drawing.Point(474, 156);
+            this.ProjectDetailsBtn.Location = new System.Drawing.Point(474, 270);
             this.ProjectDetailsBtn.Name = "ProjectDetailsBtn";
             this.ProjectDetailsBtn.Size = new System.Drawing.Size(203, 75);
             this.ProjectDetailsBtn.TabIndex = 5;
@@ -101,7 +101,7 @@
             // EmployeeDetailsBtn
             // 
             this.EmployeeDetailsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EmployeeDetailsBtn.Location = new System.Drawing.Point(474, 263);
+            this.EmployeeDetailsBtn.Location = new System.Drawing.Point(474, 159);
             this.EmployeeDetailsBtn.Name = "EmployeeDetailsBtn";
             this.EmployeeDetailsBtn.Size = new System.Drawing.Size(203, 76);
             this.EmployeeDetailsBtn.TabIndex = 7;

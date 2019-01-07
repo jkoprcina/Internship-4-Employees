@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Internship_4_Employees.Interface.Enumerators;
+using Internship_4_Employees.Interface.Extensions;
 
 namespace Internship_4_Employees
 {
@@ -51,11 +52,11 @@ namespace Internship_4_Employees
             var role = Roles.Programer;
             var dateOfBirth = DateTime.Now;
             
-            name = NameTbx.Text;
-            lastname = LastnameTbx.Text;
+            name = NameTbx.Text.RemoveWhiteSpaces().CapitalizeWords();
+            lastname = LastnameTbx.Text.RemoveWhiteSpaces().CapitalizeWords();
             try
             {
-                OIB = int.Parse(OIBTxb.Text);
+                OIB = int.Parse(OIBTxb.Text.RemoveAllTheWhiteSpaces());
                 foreach (var person in _employees)
                 {
                     if (person.OIB == OIB)
@@ -75,7 +76,7 @@ namespace Internship_4_Employees
 
                 if (OccupationCmb.SelectedIndex > -1)
                 {
-                    role = (Roles)OccupationCmb.SelectedValue;
+                    role = (Roles) OccupationCmb.SelectedValue;
                     MessageBox.Show(role.ToString());
                 }
                 else
@@ -96,20 +97,13 @@ namespace Internship_4_Employees
                 string[] temp = AllProjectsCbx.CheckedItems[x].ToString().Split('\t');
                 var project = _listOfProjects.Get(temp[0]);
                 employee.Projects.Add(project);
-                foreach (var p in _projects)
-                {
-                    if (p == project)
-                        p.AddAssigned(employee);
-                }
+                project.Assigned.Add(employee);
             }
 
             _listOfEmployees.Add(employee);
-            this.Close();
+            Close();
         }
 
-        private void BackBtn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        private void BackBtn_Click(object sender, EventArgs e) => this.Close();
     }
 }

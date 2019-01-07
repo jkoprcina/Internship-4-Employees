@@ -19,9 +19,16 @@ namespace Internship_4_Employees
         {
             InitializeComponent();
             listOfEmployees = new AllEmployeesRepository();
-            listOfEmployees.GetAllEmployees();
             listOfProjects = new AllProjectsRepository();
-            listOfProjects.GetAllProjects();
+            //ovo je hardkoriranje, nadam se da nije bitno sta sam ovako glupo napravia jer je ionako samo za probu
+            var employees = listOfEmployees.GetAllEmployees();
+            var projects = listOfProjects.GetAllProjects();
+            foreach (var p in projects)
+            {
+                foreach(var e in employees)
+                    e.Projects.Add(p);
+            }
+
         }
 
         private void InformationBtn_Click_1(object sender, EventArgs e)
@@ -44,13 +51,13 @@ namespace Internship_4_Employees
 
         private void RemoveEmployeeBtn_Click(object sender, EventArgs e)
         {
-            var removeEmployee = new RemoveEmployee(listOfEmployees);
+            var removeEmployee = new RemoveEmployee(listOfEmployees, listOfProjects);
             removeEmployee.ShowDialog();
         }
 
         private void RemoveProjectBtn_Click(object sender, EventArgs e)
         {
-            var removeProject = new RemoveProject(listOfProjects);
+            var removeProject = new RemoveProject(listOfEmployees, listOfProjects);
             removeProject.ShowDialog();
         }
 

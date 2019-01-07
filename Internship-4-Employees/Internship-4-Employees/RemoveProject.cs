@@ -15,12 +15,16 @@ namespace Internship_4_Employees
     public partial class RemoveProject : Form
     {
         private AllProjectsRepository _listOfProjects;
+        private AllEmployeesRepository _listOfEmployees;
         private List<Project> _projects;
-        public RemoveProject(AllProjectsRepository listOfProjects)
+        private List<Employee> _employees;
+        public RemoveProject(AllEmployeesRepository listOfEmployees, AllProjectsRepository listOfProjects)
         {
             InitializeComponent();
             _listOfProjects = listOfProjects;
+            _listOfEmployees = listOfEmployees;
             _projects = _listOfProjects.GetAllProjects();
+            _employees = _listOfEmployees.GetAllEmployees();
             CleaningAndFillingForm();
         }
 
@@ -38,7 +42,14 @@ namespace Internship_4_Employees
             if (AllProjectsLbx.SelectedIndex > -1)
             {
                 string[] temp = AllProjectsLbx.SelectedItem.ToString().Split('\t');
-                _listOfProjects.Remove(temp[0]);
+                var project = _listOfProjects.Get(temp[0]);
+                _listOfProjects.Remove(project);
+                foreach (var employee in _employees)
+                {
+                    if (employee.Projects.Contains(project))
+                        employee.Projects.Remove(project);
+                }
+
             }
             else
             {

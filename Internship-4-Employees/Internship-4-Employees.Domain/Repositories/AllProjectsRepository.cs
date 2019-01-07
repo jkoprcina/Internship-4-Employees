@@ -35,16 +35,9 @@ namespace Internship_4_Employees.Domain.Repositories
             _projects.Add(projectToAdd);
         }
 
-        public void Remove(string nameOfProjectToRemove)
+        public void Remove(Project project)
         {
-            foreach (var p in _projects)
-            {
-                if (p.Name == nameOfProjectToRemove)
-                {
-                    _projects.Remove(p);
-                    break;
-                }
-            }
+            _projects.Remove(project);
         }
 
         public Project Get(string nameOfProjectToGet)

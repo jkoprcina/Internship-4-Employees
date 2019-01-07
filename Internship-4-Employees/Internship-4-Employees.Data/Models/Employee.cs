@@ -24,7 +24,8 @@ namespace Internship_4_Employees.Data.Models
         public DateTime DateOfBirth { get; set; }
         public int OIB { get; set; }
         public Roles Role { get; set; }
-        public List<Project> Projects;
+        public List<Project> Projects { get; set; }
+        public int WeeklyWorkTime { get; set; }
 
         public override string ToString()
         {
@@ -36,7 +37,7 @@ namespace Internship_4_Employees.Data.Models
             var numberOfFinishedProjects = 0;
             var numberOfOngoingProjects = 0;
             var numberOfPlannedProjects = 0;
-            int? weeklyWorkTime = 0;
+            WeeklyWorkTime = 0;
 
             foreach (var p in Projects)
             {
@@ -47,8 +48,8 @@ namespace Internship_4_Employees.Data.Models
                 else
                     numberOfPlannedProjects++;
 
-                if (p.WorkingHours != null)
-                    weeklyWorkTime += p.WorkingHours;
+                if (p.WorkingHours != null && p.State == States.Ongoing)
+                    WeeklyWorkTime += (int)p.WorkingHours;
             }
 
             return $"Name: {Name} {Lastname}\n" +

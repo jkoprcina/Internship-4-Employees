@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -101,13 +102,19 @@ namespace Internship_4_Employees
             else if (finish < DateTime.Now)
                 state = States.Finished;
 
-            _listOfProjects.Add(new Project(name, listOfEmployeesInProject, start, finish, state, hours));
-            this.Close();
+            var project = new Project(name, listOfEmployeesInProject, start, finish, state, hours);
+            _listOfProjects.Add(project);
+
+            foreach (var person in EmployeeCbx.CheckedItems)
+            {
+                var oneEmployee = person.ToString();
+                string[] infoOneEmployee = oneEmployee.Split('\t');
+                var employee = _listOfEmployees.Get(int.Parse(infoOneEmployee[2]));
+                employee.Projects.Add(project);
+            }
+            Close();
         }
 
-        private void ExitBtn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        private void ExitBtn_Click(object sender, EventArgs e) => this.Close();
     }
 }

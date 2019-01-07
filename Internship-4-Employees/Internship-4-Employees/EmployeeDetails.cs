@@ -17,6 +17,12 @@ namespace Internship_4_Employees
         {
             InitializeComponent();
             EmployeeDetailsRtb.Text += employee.AllInfo();
+            if(employee.WeeklyWorkTime > 41)
+                NumberOfHoursWorkingBtn.BackColor = Color.Red;
+            else if (employee.WeeklyWorkTime < 42 && employee.WeeklyWorkTime > 20)
+                NumberOfHoursWorkingBtn.BackColor = Color.Green;
+            else
+                NumberOfHoursWorkingBtn.BackColor = Color.Yellow;
         }
 
         private void ExitBtn_Click(object sender, EventArgs e) => Close();

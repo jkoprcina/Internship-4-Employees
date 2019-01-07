@@ -42,13 +42,32 @@ namespace Internship_4_Employees
 
         private void EditEmployeeBtn_Click(object sender, EventArgs e)
         {
-            var edit = new AddEmployee(_listOfEmployees, _listOfProjects);
-            edit.ShowDialog();
+            if (AllEmployeesLbx.SelectedIndex > -1)
+            {
+                string[] temp = AllEmployeesLbx.SelectedItem.ToString().Split('\t');
+                var editEmployee = new EditEmployee(_listOfEmployees.Get(int.Parse(temp[1])), _listOfProjects);
+                editEmployee.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please choose the employee you wish to edit");
+                return;
+            }
         }
 
         private void EditProjectBtn_Click(object sender, EventArgs e)
         {
-
+            if (AllProjectsLbx.SelectedIndex > -1)
+            {
+                string[] temp = AllProjectsLbx.SelectedItem.ToString().Split('\t');
+                var editProject = new EditProject(_listOfProjects.Get(temp[0]));
+                editProject.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please choose the project you wish to edit");
+                return;
+            }
         }
     }
 }

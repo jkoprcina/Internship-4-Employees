@@ -11,6 +11,7 @@ namespace Internship_4_Employees.Domain.Repositories
     public class AllEmployeesRepository
     {
         private List<Employee> _employees;
+        private List<Project> _projects = new List<Project>();
         public AllEmployeesRepository()
         {
             FakeData();
@@ -20,8 +21,8 @@ namespace Internship_4_Employees.Domain.Repositories
         {
             _employees = new List<Employee>()
             {
-                new Employee("Josip", "Koprcina", DateTime.Now, 0, Roles.Programer),
-                new Employee("Ana", "Vucak", DateTime.Now, 1, Roles.Programer)
+                new Employee("Josip", "Koprcina", DateTime.Now, 0, Roles.Programer, _projects),
+                new Employee("Ana", "Vucak", DateTime.Now, 1, Roles.Programer, _projects)
             };
         }
 

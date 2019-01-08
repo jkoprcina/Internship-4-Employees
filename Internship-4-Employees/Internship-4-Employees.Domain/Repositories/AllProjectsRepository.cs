@@ -11,8 +11,7 @@ namespace Internship_4_Employees.Domain.Repositories
     public class AllProjectsRepository
     {
         private List<Project> _projects;
-        private AllEmployeesRepository _listOfEmployees = new AllEmployeesRepository();
-        private List<Employee> _employees;
+        private List<Employee> _employees = new List<Employee>();
         public AllProjectsRepository()
         {
             FakeData();
@@ -20,7 +19,6 @@ namespace Internship_4_Employees.Domain.Repositories
 
         private void FakeData()
         {
-            _employees = _listOfEmployees.GetAllEmployees();
             _projects = new List<Project>()
             {
                 new Project("Google Glasses", _employees, new DateTime(2016, 1, 18), new DateTime(2017, 1, 18), States.Ongoing, 10),

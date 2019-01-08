@@ -30,15 +30,14 @@
         {
             this.RemoveBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.UsersRtb = new System.Windows.Forms.RichTextBox();
-            this.ChooseLbx = new System.Windows.Forms.ListBox();
+            this.AllEmployeesLbx = new System.Windows.Forms.ListBox();
             this.BackBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // RemoveBtn
             // 
             this.RemoveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RemoveBtn.Location = new System.Drawing.Point(108, 434);
+            this.RemoveBtn.Location = new System.Drawing.Point(12, 431);
             this.RemoveBtn.Name = "RemoveBtn";
             this.RemoveBtn.Size = new System.Drawing.Size(151, 40);
             this.RemoveBtn.TabIndex = 5;
@@ -50,32 +49,24 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(89, 405);
+            this.label1.Location = new System.Drawing.Point(40, 403);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(395, 60);
+            this.label1.Size = new System.Drawing.Size(286, 80);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Click on the person you wish to remove on the right box\r\n\r\n\r\n";
+            this.label1.Text = "Click on the person you wish to remove \r\n\r\n\r\n\r\n";
             // 
-            // UsersRtb
+            // AllEmployeesLbx
             // 
-            this.UsersRtb.Location = new System.Drawing.Point(12, 12);
-            this.UsersRtb.Name = "UsersRtb";
-            this.UsersRtb.Size = new System.Drawing.Size(422, 381);
-            this.UsersRtb.TabIndex = 3;
-            this.UsersRtb.Text = "";
-            // 
-            // ChooseLbx
-            // 
-            this.ChooseLbx.FormattingEnabled = true;
-            this.ChooseLbx.Location = new System.Drawing.Point(452, 12);
-            this.ChooseLbx.Name = "ChooseLbx";
-            this.ChooseLbx.Size = new System.Drawing.Size(120, 381);
-            this.ChooseLbx.TabIndex = 6;
+            this.AllEmployeesLbx.FormattingEnabled = true;
+            this.AllEmployeesLbx.Location = new System.Drawing.Point(12, 12);
+            this.AllEmployeesLbx.Name = "AllEmployeesLbx";
+            this.AllEmployeesLbx.Size = new System.Drawing.Size(336, 381);
+            this.AllEmployeesLbx.TabIndex = 6;
             // 
             // BackBtn
             // 
             this.BackBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BackBtn.Location = new System.Drawing.Point(284, 434);
+            this.BackBtn.Location = new System.Drawing.Point(198, 431);
             this.BackBtn.Name = "BackBtn";
             this.BackBtn.Size = new System.Drawing.Size(150, 40);
             this.BackBtn.TabIndex = 12;
@@ -87,12 +78,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(593, 495);
+            this.ClientSize = new System.Drawing.Size(366, 495);
             this.Controls.Add(this.BackBtn);
-            this.Controls.Add(this.ChooseLbx);
+            this.Controls.Add(this.AllEmployeesLbx);
             this.Controls.Add(this.RemoveBtn);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.UsersRtb);
             this.Name = "RemoveEmployee";
             this.Text = "Removingcs";
             this.ResumeLayout(false);
@@ -104,8 +94,7 @@
 
         private System.Windows.Forms.Button RemoveBtn;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RichTextBox UsersRtb;
-        private System.Windows.Forms.ListBox ChooseLbx;
+        private System.Windows.Forms.ListBox AllEmployeesLbx;
         private System.Windows.Forms.Button BackBtn;
     }
 }

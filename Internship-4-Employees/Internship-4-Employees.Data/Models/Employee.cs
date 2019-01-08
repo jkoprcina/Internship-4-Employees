@@ -9,14 +9,14 @@ namespace Internship_4_Employees.Data.Models
 {
     public class Employee
     {
-        public Employee(string name, string lastname, DateTime dateOfBirth, int oIB, Roles role)
+        public Employee(string name, string lastname, DateTime dateOfBirth, int oIB, Roles role, List<Project> projects)
         {
             Name = name;
             Lastname = lastname;
             DateOfBirth = dateOfBirth;
             OIB = oIB;
             Role = role;
-            Projects = new List<Project>();
+            Projects = projects;
         }
 
         public string Name { get; set; }
@@ -59,6 +59,12 @@ namespace Internship_4_Employees.Data.Models
                    $"Number of finished Projects: {numberOfFinishedProjects}\n" +
                    $"Number of ongoing Projects: {numberOfOngoingProjects}\n" +
                    $"Number of planned Projects: {numberOfPlannedProjects}\n";
+        }
+
+        public void AddProject(Project project)
+        {
+            if(!Projects.Contains(project))
+                Projects.Add(project);
         }
     }
 }

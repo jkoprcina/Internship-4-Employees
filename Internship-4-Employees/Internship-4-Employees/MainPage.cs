@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Internship_4_Employees.Data.Models;
 using Internship_4_Employees.Domain.Repositories;
 
 namespace Internship_4_Employees
@@ -15,20 +16,24 @@ namespace Internship_4_Employees
     {
         public AllEmployeesRepository listOfEmployees;
         public AllProjectsRepository listOfProjects;
+        public List<Employee> _employees;
+        public List<Project> _projects;
+        public int counter;
         public MainPage()
         {
             InitializeComponent();
             listOfEmployees = new AllEmployeesRepository();
             listOfProjects = new AllProjectsRepository();
-            //ovo je hardkoriranje, nadam se da nije bitno sta sam ovako glupo napravia jer je ionako samo za probu
-            var employees = listOfEmployees.GetAllEmployees();
-            var projects = listOfProjects.GetAllProjects();
-            foreach (var p in projects)
+            var _employees = listOfEmployees.GetAllEmployees();
+            var _projects = listOfProjects.GetAllProjects();
+            foreach (var e in _employees)
             {
-                foreach(var e in employees)
-                    e.Projects.Add(p);
+                foreach (var p in _projects)
+                {
+                    e.AddProject(p);
+                    p.AddEmployee(e);
+                }
             }
-
         }
 
         private void InformationBtn_Click_1(object sender, EventArgs e)

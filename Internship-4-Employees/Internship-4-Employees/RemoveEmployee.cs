@@ -30,17 +30,14 @@ namespace Internship_4_Employees
 
         public void CleaningAndFillingForm()
         {
-            UsersRtb.Clear();
-            ChooseLbx.Items.Clear();
+            AllEmployeesLbx.Items.Clear();
             foreach (var e in _employees)
-                UsersRtb.Text += e.ToString();
-            foreach (var e in _employees)
-                ChooseLbx.Items.Add(e.OIB + "\n");
+                AllEmployeesLbx.Items.Add(e.ToString());
         }
 
         private void RemoveBtn_Click(object sender, EventArgs e)
         {
-            if (ChooseLbx.SelectedIndex > -1)
+            if (AllEmployeesLbx.SelectedIndex > -1)
             {
                 string message = "Are you sure you wish to remove this employee?";
                 string caption = "Asking approval";
@@ -54,17 +51,12 @@ namespace Internship_4_Employees
                     return;
                 }
 
-                var employee = _listOfEmployees.Get(int.Parse(ChooseLbx.SelectedItem.ToString()));
-                _listOfEmployees.Remove(int.Parse(ChooseLbx.SelectedItem.ToString()));
+                string[] employeeInfoArray = AllEmployeesLbx.SelectedItem.ToString().Split('\t');
+                var employee = _listOfEmployees.Get(int.Parse(employeeInfoArray[1]));
+                _listOfEmployees.Remove(int.Parse(employeeInfoArray[1]));
                 foreach (var p in _projects)
                 {
-                    foreach (var i in p.Assigned)
-                        MessageBox.Show(i.ToString());
-                    if (p.Assigned.Contains(employee))
-                    {
-                        MessageBox.Show(p.ToString());
-                        p.Assigned.Remove(employee);
-                    }
+                    p.RemoveAssignedIfContained(employee);
                 }
             }
             else

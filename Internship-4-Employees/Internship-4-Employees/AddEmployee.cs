@@ -51,6 +51,7 @@ namespace Internship_4_Employees
             var OIB = 0;
             var role = Roles.Programer;
             var dateOfBirth = DateTime.Now;
+            var listOfProjects = new List<Project>();
             
             name = NameTbx.Text.RemoveWhiteSpaces().CapitalizeWords();
             lastname = LastnameTbx.Text.RemoveWhiteSpaces().CapitalizeWords();
@@ -90,17 +91,16 @@ namespace Internship_4_Employees
                 MessageBox.Show("You don't know why it throws an error, somewhere in role picking part probably");
             }
 
-            var employee = new Employee(name, lastname, dateOfBirth, OIB, role);
-            
-            for (int x = 0; x < AllProjectsCbx.CheckedItems.Count; x++)
-            {
-                string[] temp = AllProjectsCbx.CheckedItems[x].ToString().Split('\t');
-                var project = _listOfProjects.Get(temp[0]);
-                employee.Projects.Add(project);
-                project.Assigned.Add(employee);
-            }
-
+            var employee = new Employee(name, lastname, dateOfBirth, OIB, role, listOfProjects);
             _listOfEmployees.Add(employee);
+
+            foreach (var project in AllProjectsCbx.CheckedItems)
+            {
+                string[] singleProjectInfo = project.ToString().Split('\t');
+                var _project = _listOfProjects.Get(singleProjectInfo[0]);
+                _project.AddEmployee(employee);
+                employee.Projects.Add(_project);
+            }
             Close();
         }
 

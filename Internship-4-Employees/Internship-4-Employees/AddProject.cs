@@ -79,8 +79,7 @@ namespace Internship_4_Employees
                 //the OIB will always be in the second place of the array because we set up the checkbox that way 
                 foreach (var person in EmployeeCbx.CheckedItems)
                 {
-                    var oneEmployee = person.ToString();
-                    string[] infoOneEmployee = oneEmployee.Split('\t');
+                    string[] infoOneEmployee = person.ToString().Split('\t');
                     var employee = _listOfEmployees.Get(int.Parse(infoOneEmployee[2]));
                     listOfEmployeesInProject.Add(employee);
                 }
@@ -107,8 +106,7 @@ namespace Internship_4_Employees
 
             foreach (var person in EmployeeCbx.CheckedItems)
             {
-                var oneEmployee = person.ToString();
-                string[] infoOneEmployee = oneEmployee.Split('\t');
+                string[] infoOneEmployee = person.ToString().Split('\t');
                 var employee = _listOfEmployees.Get(int.Parse(infoOneEmployee[2]));
                 employee.Projects.Add(project);
             }

@@ -31,10 +31,16 @@ namespace Internship_4_Employees.Data.Models
             return $"{Name}\t{State}\n";
         }
 
-        public void AddAssigned(Employee employee)
+        public void AddEmployee(Employee employee)
         {
             if(!Assigned.Contains(employee))
                 Assigned.Add(employee);
+        }
+
+        public void RemoveAssignedIfContained(Employee employee)
+        {
+            if (Assigned.Contains(employee))
+                Assigned.Remove(employee);
         }
     }
 }

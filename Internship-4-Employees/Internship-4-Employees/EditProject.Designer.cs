@@ -33,12 +33,12 @@
             this.ExitBtn = new System.Windows.Forms.Button();
             this.EditProjectBtn = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.EmployeeCbx = new System.Windows.Forms.CheckedListBox();
+            this.AllEmployeeCbx = new System.Windows.Forms.CheckedListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.FinishingDtp = new System.Windows.Forms.DateTimePicker();
+            this.FinishDtp = new System.Windows.Forms.DateTimePicker();
             this.StartDtp = new System.Windows.Forms.DateTimePicker();
-            this.HoursTbx = new System.Windows.Forms.TextBox();
+            this.NumberOfHoursOnProjectTbx = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -79,6 +79,7 @@
             this.EditProjectBtn.TabIndex = 20;
             this.EditProjectBtn.Text = "Edit Project";
             this.EditProjectBtn.UseVisualStyleBackColor = true;
+            this.EditProjectBtn.Click += new System.EventHandler(this.EditProjectBtn_Click);
             // 
             // label5
             // 
@@ -90,13 +91,13 @@
             this.label5.TabIndex = 19;
             this.label5.Text = "Choose the employees for the project:";
             // 
-            // EmployeeCbx
+            // AllEmployeeCbx
             // 
-            this.EmployeeCbx.FormattingEnabled = true;
-            this.EmployeeCbx.Location = new System.Drawing.Point(87, 344);
-            this.EmployeeCbx.Name = "EmployeeCbx";
-            this.EmployeeCbx.Size = new System.Drawing.Size(252, 184);
-            this.EmployeeCbx.TabIndex = 18;
+            this.AllEmployeeCbx.FormattingEnabled = true;
+            this.AllEmployeeCbx.Location = new System.Drawing.Point(87, 344);
+            this.AllEmployeeCbx.Name = "AllEmployeeCbx";
+            this.AllEmployeeCbx.Size = new System.Drawing.Size(252, 184);
+            this.AllEmployeeCbx.TabIndex = 18;
             // 
             // label4
             // 
@@ -118,12 +119,12 @@
             this.label3.TabIndex = 16;
             this.label3.Text = "Starting date";
             // 
-            // FinishingDtp
+            // FinishDtp
             // 
-            this.FinishingDtp.Location = new System.Drawing.Point(117, 265);
-            this.FinishingDtp.Name = "FinishingDtp";
-            this.FinishingDtp.Size = new System.Drawing.Size(200, 20);
-            this.FinishingDtp.TabIndex = 15;
+            this.FinishDtp.Location = new System.Drawing.Point(117, 265);
+            this.FinishDtp.Name = "FinishDtp";
+            this.FinishDtp.Size = new System.Drawing.Size(200, 20);
+            this.FinishDtp.TabIndex = 15;
             // 
             // StartDtp
             // 
@@ -132,12 +133,12 @@
             this.StartDtp.Size = new System.Drawing.Size(200, 20);
             this.StartDtp.TabIndex = 14;
             // 
-            // HoursTbx
+            // NumberOfHoursOnProjectTbx
             // 
-            this.HoursTbx.Location = new System.Drawing.Point(348, 64);
-            this.HoursTbx.Name = "HoursTbx";
-            this.HoursTbx.Size = new System.Drawing.Size(44, 20);
-            this.HoursTbx.TabIndex = 13;
+            this.NumberOfHoursOnProjectTbx.Location = new System.Drawing.Point(348, 64);
+            this.NumberOfHoursOnProjectTbx.Name = "NumberOfHoursOnProjectTbx";
+            this.NumberOfHoursOnProjectTbx.Size = new System.Drawing.Size(44, 20);
+            this.NumberOfHoursOnProjectTbx.TabIndex = 13;
             // 
             // label2
             // 
@@ -157,12 +158,12 @@
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.EditProjectBtn);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.EmployeeCbx);
+            this.Controls.Add(this.AllEmployeeCbx);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.FinishingDtp);
+            this.Controls.Add(this.FinishDtp);
             this.Controls.Add(this.StartDtp);
-            this.Controls.Add(this.HoursTbx);
+            this.Controls.Add(this.NumberOfHoursOnProjectTbx);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ProjectNameTxt);
             this.Controls.Add(this.ProjectNameLbl);
@@ -180,12 +181,12 @@
         private System.Windows.Forms.Button ExitBtn;
         private System.Windows.Forms.Button EditProjectBtn;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckedListBox EmployeeCbx;
+        private System.Windows.Forms.CheckedListBox AllEmployeeCbx;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker FinishingDtp;
+        private System.Windows.Forms.DateTimePicker FinishDtp;
         private System.Windows.Forms.DateTimePicker StartDtp;
-        private System.Windows.Forms.TextBox HoursTbx;
+        private System.Windows.Forms.TextBox NumberOfHoursOnProjectTbx;
         private System.Windows.Forms.Label label2;
     }
 }

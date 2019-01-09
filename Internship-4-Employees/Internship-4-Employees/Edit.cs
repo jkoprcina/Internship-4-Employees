@@ -60,8 +60,9 @@ namespace Internship_4_Employees
             if (AllProjectsLbx.SelectedIndex > -1)
             {
                 string[] temp = AllProjectsLbx.SelectedItem.ToString().Split('\t');
-                var editProject = new EditProject(_listOfProjects.Get(temp[0]));
+                var editProject = new EditProject(_listOfProjects.Get(temp[0]), _listOfEmployees);
                 editProject.ShowDialog();
+                CleaningAndFillingForm();
             }
             else
             {

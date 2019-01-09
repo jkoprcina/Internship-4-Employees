@@ -37,9 +37,9 @@ namespace Internship_4_Employees
             LastnameTbx.Clear();
             OIBTxb.Clear();
             AllProjectsCbx.Items.Clear();
-            OccupationCmb.Items.Clear();
-            foreach (var r in Enum.GetValues(typeof(Roles)))
-                OccupationCmb.Items.Add(r);
+            PositionCbx.Items.Clear();
+            foreach (var r in Enum.GetValues(typeof(Jobs)))
+                PositionCbx.Items.Add(r);
             foreach (var p in _projects)
                 AllProjectsCbx.Items.Add(p.ToString());
         }
@@ -49,7 +49,7 @@ namespace Internship_4_Employees
             var name = "";
             var lastname = "";
             var OIB = 0;
-            var role = Roles.Programer;
+            var role = Jobs.Programer;
             var dateOfBirth = DateTime.Now;
             var listOfProjects = new List<Project>();
             
@@ -75,9 +75,9 @@ namespace Internship_4_Employees
                     return;
                 }
 
-                if (OccupationCmb.SelectedIndex > -1)
+                if (PositionCbx.SelectedIndex > -1)
                 {
-                    role = (Roles) OccupationCmb.SelectedValue;
+                    role = (Jobs) PositionCbx.SelectedValue;
                     MessageBox.Show(role.ToString());
                 }
                 else

@@ -26,18 +26,18 @@ namespace Internship_4_Employees
                 AssignedToProjectRtb.Text = "Nobody is yet assigned to the project";
             else
             {
-                foreach (var r in Enum.GetValues(typeof(Roles)))
+                foreach (var r in Enum.GetValues(typeof(Jobs)))
                 {
                     var counter = 0;
                     foreach (var e in project.Assigned)
                     {
-                        if (e.Role == (Roles) r)
+                        if (e.Role == (Jobs) r)
                             counter++;
                     }
                     AssignedToProjectRtb.Text += $"{r} {counter}\n";
                     foreach (var e in project.Assigned)
                     {
-                        if (e.Role == (Roles) r)
+                        if (e.Role == (Jobs) r)
                             AssignedToProjectRtb.Text += e.ToString();
                     }
                 }

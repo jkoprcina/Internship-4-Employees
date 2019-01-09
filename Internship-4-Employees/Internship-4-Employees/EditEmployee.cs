@@ -31,12 +31,13 @@ namespace Internship_4_Employees
 
         public void ClearAndFillForms()
         {
-            foreach (var r in Enum.GetValues(typeof(Roles)))
+            foreach (var r in Enum.GetValues(typeof(Jobs)))
                 RolesCmb.Items.Add(r);
             foreach (var p in _projects)
                 AllProjectsCbx.Items.Add(p.ToString());
             NameTbx.Text = _employee.Name;
             LastnameTbx.Text = _employee.Lastname;
+            OIBTxt.Text = _employee.OIB.ToString();
             RolesCmb.Text = _employee.Role.ToString();
             DateOfBirthPicker.Value = _employee.DateOfBirth;
             for (int x = 0; x < AllProjectsCbx.Items.Count; x++)
@@ -88,7 +89,7 @@ namespace Internship_4_Employees
                 }
 
                 if (RolesCmb.SelectedIndex > -1)
-                    newRole = (Roles) RolesCmb.SelectedValue;
+                    newRole = (Jobs) RolesCmb.SelectedValue;
 
                 _employee.Projects.Clear();
 

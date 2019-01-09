@@ -37,10 +37,10 @@
             this.oibLbl = new System.Windows.Forms.Label();
             this.OIBTxb = new System.Windows.Forms.TextBox();
             this.AllProjectsCbx = new System.Windows.Forms.CheckedListBox();
-            this.OccupationCmb = new System.Windows.Forms.ComboBox();
+            this.PositionCbx = new System.Windows.Forms.ComboBox();
             this.BackBtn = new System.Windows.Forms.Button();
             this.DateOfBirthLbl = new System.Windows.Forms.Label();
-            this.OccupationLbl = new System.Windows.Forms.Label();
+            this.PositionLbl = new System.Windows.Forms.Label();
             this.ProjectsLbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -122,13 +122,13 @@
             this.AllProjectsCbx.Size = new System.Drawing.Size(214, 156);
             this.AllProjectsCbx.TabIndex = 9;
             // 
-            // OccupationCmb
+            // PositionCbx
             // 
-            this.OccupationCmb.FormattingEnabled = true;
-            this.OccupationCmb.Location = new System.Drawing.Point(125, 191);
-            this.OccupationCmb.Name = "OccupationCmb";
-            this.OccupationCmb.Size = new System.Drawing.Size(214, 21);
-            this.OccupationCmb.TabIndex = 10;
+            this.PositionCbx.FormattingEnabled = true;
+            this.PositionCbx.Location = new System.Drawing.Point(125, 191);
+            this.PositionCbx.Name = "PositionCbx";
+            this.PositionCbx.Size = new System.Drawing.Size(214, 21);
+            this.PositionCbx.TabIndex = 10;
             // 
             // BackBtn
             // 
@@ -151,15 +151,15 @@
             this.DateOfBirthLbl.TabIndex = 12;
             this.DateOfBirthLbl.Text = "Date of Birth:";
             // 
-            // OccupationLbl
+            // PositionLbl
             // 
-            this.OccupationLbl.AutoSize = true;
-            this.OccupationLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OccupationLbl.Location = new System.Drawing.Point(12, 192);
-            this.OccupationLbl.Name = "OccupationLbl";
-            this.OccupationLbl.Size = new System.Drawing.Size(94, 20);
-            this.OccupationLbl.TabIndex = 13;
-            this.OccupationLbl.Text = "Occupation:";
+            this.PositionLbl.AutoSize = true;
+            this.PositionLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PositionLbl.Location = new System.Drawing.Point(12, 192);
+            this.PositionLbl.Name = "PositionLbl";
+            this.PositionLbl.Size = new System.Drawing.Size(109, 20);
+            this.PositionLbl.TabIndex = 13;
+            this.PositionLbl.Text = "Position (Job):";
             // 
             // ProjectsLbl
             // 
@@ -175,12 +175,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(360, 533);
+            this.ClientSize = new System.Drawing.Size(360, 524);
             this.Controls.Add(this.ProjectsLbl);
-            this.Controls.Add(this.OccupationLbl);
+            this.Controls.Add(this.PositionLbl);
             this.Controls.Add(this.DateOfBirthLbl);
             this.Controls.Add(this.BackBtn);
-            this.Controls.Add(this.OccupationCmb);
+            this.Controls.Add(this.PositionCbx);
             this.Controls.Add(this.AllProjectsCbx);
             this.Controls.Add(this.OIBTxb);
             this.Controls.Add(this.oibLbl);
@@ -208,10 +208,10 @@
         private System.Windows.Forms.Label oibLbl;
         private System.Windows.Forms.TextBox OIBTxb;
         private System.Windows.Forms.CheckedListBox AllProjectsCbx;
-        private System.Windows.Forms.ComboBox OccupationCmb;
+        private System.Windows.Forms.ComboBox PositionCbx;
         private System.Windows.Forms.Button BackBtn;
         private System.Windows.Forms.Label DateOfBirthLbl;
-        private System.Windows.Forms.Label OccupationLbl;
+        private System.Windows.Forms.Label PositionLbl;
         private System.Windows.Forms.Label ProjectsLbl;
     }
 }

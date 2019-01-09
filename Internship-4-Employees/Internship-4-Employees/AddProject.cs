@@ -35,9 +35,7 @@ namespace Internship_4_Employees
         {
             EmployeeCbx.Items.Clear();
             foreach (var e in _employees)
-            {
-                EmployeeCbx.Items.Add($"{e.Name}\t{e.Lastname}\t{e.OIB}\n");
-            }
+                EmployeeCbx.Items.Add(e.ToString());
         }
 
         private void AddProjectBtn_Click(object sender, EventArgs e)

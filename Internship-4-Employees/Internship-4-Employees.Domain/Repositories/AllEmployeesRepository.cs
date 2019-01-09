@@ -21,8 +21,8 @@ namespace Internship_4_Employees.Domain.Repositories
         {
             _employees = new List<Employee>()
             {
-                new Employee("Josip", "Koprcina", DateTime.Now, 0, Roles.Programer, _projects),
-                new Employee("Ana", "Vucak", DateTime.Now, 1, Roles.Programer, _projects)
+                new Employee("Josip", "Koprcina", DateTime.Now, 0, Jobs.Programer, _projects),
+                new Employee("Ana", "Vucak", DateTime.Now, 1, Jobs.Programer, _projects)
             };
         }
 

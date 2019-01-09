@@ -9,7 +9,7 @@ namespace Internship_4_Employees.Data.Models
 {
     public class Employee
     {
-        public Employee(string name, string lastname, DateTime dateOfBirth, int oIB, Roles role, List<Project> projects)
+        public Employee(string name, string lastname, DateTime dateOfBirth, int oIB, Jobs role, List<Project> projects)
         {
             Name = name;
             Lastname = lastname;
@@ -23,7 +23,7 @@ namespace Internship_4_Employees.Data.Models
         public string Lastname { get; set; }
         public DateTime DateOfBirth { get; set; }
         public int OIB { get; set; }
-        public Roles Role { get; set; }
+        public Jobs Role { get; set; }
         public List<Project> Projects { get; set; }
         public int WeeklyWorkTime { get; set; }
 

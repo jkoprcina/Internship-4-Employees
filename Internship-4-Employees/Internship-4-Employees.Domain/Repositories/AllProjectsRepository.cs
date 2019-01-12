@@ -29,6 +29,18 @@ namespace Internship_4_Employees.Domain.Repositories
             _projects.Remove(project);
         }
 
+        public static void Remove(string projectName)
+        {
+            foreach (var project in _projects)
+            {
+                if (project.Name == projectName)
+                {
+                    _projects.Remove(project);
+                    break;
+                }
+            }
+        }
+
         public static Project Get(string nameOfProjectToGet)
         {
             foreach (var p in _projects)
@@ -44,7 +56,7 @@ namespace Internship_4_Employees.Domain.Repositories
             if (CheckNameAuthentication(projectName))
             {
                 var project = new Project(projectName.RemoveWhiteSpaces().CapitalizeWords(), startDate, finishDate);
-                _projects.Add(project);
+                Add(project);
 
                 EmployeeProjectRepository.AddConnectionsSingleProject(project.Name, employees);
                 return true;
@@ -93,6 +105,45 @@ namespace Internship_4_Employees.Domain.Repositories
                 return "Nobody is yet assigned to the project";
             else
                 return infoToReturn;
+        }
+
+        public static List<Project> GetAllProjectsWorkedOn(string oib)
+        {
+            var listOfWorkedOnProjects = new List<Project>();
+            foreach (var connection in EmployeeProjectRepository._listOfAllConnections)
+            {
+                if (connection.OIB == oib)
+                {
+                    var project = Get(connection.Name);
+                    if (!listOfWorkedOnProjects.Contains(project))
+                        listOfWorkedOnProjects.Add(project);
+                }
+            }
+            return listOfWorkedOnProjects;
+        }
+
+        public static List<Project> GetAllProjectsNotWorkedOn(List<Project> projectsWorkedOn)
+        {
+            var listOfNotWorkedOnProjects = new List<Project>();
+            foreach (var connection in EmployeeProjectRepository._listOfAllConnections)
+            {
+                var project = Get(connection.Name);
+                if (!projectsWorkedOn.Contains(project))
+                {
+                    if (!listOfNotWorkedOnProjects.Contains(project))
+                        listOfNotWorkedOnProjects.Add(project);
+                }
+            }
+            return listOfNotWorkedOnProjects;
+        }
+
+        public static void Edit(string projectName, DateTime startDate, DateTime finishDate, List<Employee> employees)
+        {
+            var project = new Project(projectName.RemoveWhiteSpaces().CapitalizeWords(), startDate, finishDate);
+            Remove(projectName);
+            Add(project);
+            EmployeeProjectRepository.RemoveAllWithProject(project);
+            EmployeeProjectRepository.AddConnectionsSingleProject(project.Name, employees);
         }
     }
 }

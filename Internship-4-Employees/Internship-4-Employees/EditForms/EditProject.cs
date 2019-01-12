@@ -18,39 +18,78 @@ namespace Internship_4_Employees
     public partial class EditProject : Form
     {
         private Project _project;
+        private List<Employee> EmployeesWorkingOnProject;
+        private List<Employee> EmployeesNotWorkingOnProject;
         public EditProject(Project project)
         {
-            InitializeComponent();
             _project = project;
+            EmployeesWorkingOnProject = AllEmployeesRepository.GetAllEmployeesWorkingOnProject(project);
+            EmployeesNotWorkingOnProject = AllEmployeesRepository.GetAllEmployeesNotWorkingOnProject(EmployeesWorkingOnProject);
+            InitializeComponent();
             ClearAndFillForm();
         }
 
         public void ClearAndFillForm()
         {
-            ProjectNameTxt.Text = _project.Name;
+            EmployeesWorkingOnPojectLbx.Items.Clear();
+            EmployeesNotWorkingOnProjectLbx.Items.Clear();
+            foreach (var e in EmployeesWorkingOnProject)
+                EmployeesWorkingOnPojectLbx.Items.Add(e);
+            foreach (var e in EmployeesNotWorkingOnProject)
+                EmployeesNotWorkingOnProjectLbx.Items.Add(e);
+
             StartDtp.Value = _project.ProjectStart.Date;
             FinishDtp.Value = _project.ProjectFinish.Date;
-            foreach (var e in AllEmployeesRepository.GetAllEmployees())
-                AllEmployeeCbx.Items.Add(e.ToString());
-            for (int x = 0; x < AllEmployeeCbx.Items.Count; x++)
-            {
-                string[] temp = AllEmployeeCbx.Items[x].ToString().Split('\t');
-                var employee = AllEmployeesRepository.Get(temp[1]);
-            }
         }
 
         private void ExitBtn_Click(object sender, EventArgs e) => Close();
 
         private void EditProjectBtn_Click(object sender, EventArgs e)
         {
-            if (!ProjectNameTxt.Text.ToString().CheckIfEmpty() && AllEmployeeCbx.SelectedIndex > -1)
+            if (EmployeesWorkingOnProject.Count > 0)
             {
+                AllProjectsRepository.AddProject(_project.Name, StartDtp.Value, FinishDtp.Value,EmployeesWorkingOnProject);
             }
             else
             {
+                MessageBox.Show(@"Wrong input");
+                return;
             }
             
             Close();
+        }
+
+        private void AddToProjectbtn_Click(object sender, EventArgs e)
+        {
+            if (EmployeesNotWorkingOnProjectLbx.SelectedIndex > -1 && !WorkingHoursTxt.Text.CheckIfEmpty() && WorkingHoursTxt.Text.CheckIfNumber())
+            {
+                var employee = EmployeesNotWorkingOnProjectLbx.SelectedItem as Employee;
+                employee.WorkingHours = int.Parse(WorkingHoursTxt.Text);
+                EmployeesWorkingOnProject.Add(employee);
+                EmployeesNotWorkingOnProject.Remove(employee);
+                ClearAndFillForm();
+            }
+            else
+            {
+                MessageBox.Show(@"Wrong input");
+                return;
+            }
+        }
+
+        private void RemoveFromProjectBtn_Click(object sender, EventArgs e)
+        {
+            if (EmployeesWorkingOnPojectLbx.SelectedIndex > -1)
+            {
+                var employee = EmployeesWorkingOnPojectLbx.SelectedItem as Employee;
+                EmployeesNotWorkingOnProject.Add(employee);
+                EmployeesWorkingOnProject.Remove(employee);
+                ClearAndFillForm();
+            }
+            else
+            {
+                MessageBox.Show(@"Wrong input");
+                return;
+            }
         }
     }
 }

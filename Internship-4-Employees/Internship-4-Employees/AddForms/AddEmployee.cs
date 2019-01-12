@@ -24,10 +24,10 @@ namespace Internship_4_Employees
             NotAddedProjects = AllProjectsRepository.GetAllProjects().ToList();
             AddedProjects = new List<Project>();
             InitializeComponent();
-            CleaningAndFillingForm();
+            ClearAndFillForm();
         }
 
-        public void CleaningAndFillingForm()
+        public void ClearAndFillForm()
         {
             ProjectsToChooseFromLbx.Items.Clear();
             ChosenProjectsLbx.Items.Clear();
@@ -69,7 +69,7 @@ namespace Internship_4_Employees
                 project.WorkingHours = int.Parse(WorkingHoursTxt.Text);
                 AddedProjects.Add(project);
                 NotAddedProjects.Remove(project);
-                CleaningAndFillingForm();
+                ClearAndFillForm();
             }
             else
             {

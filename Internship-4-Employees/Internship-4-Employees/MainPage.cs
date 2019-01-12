@@ -53,15 +53,56 @@ namespace Internship_4_Employees
 
         private void RemoveEmployeeBtn_Click(object sender, EventArgs e)
         {
-            var removeEmployee = new RemoveEmployee();
-            removeEmployee.ShowDialog();
+            if (AllEmployeesLbx.SelectedIndex > -1)
+            {
+                string message = "Are you sure you wish to remove this employee?";
+                string caption = "Asking approval";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result;
+
+                result = MessageBox.Show(message, caption, buttons);
+
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+
+                var employee = AllEmployeesLbx.SelectedItem as Employee;
+                EmployeeProjectRepository.RemoveAllWithEmployee(employee);
+                AllEmployeesRepository.Remove(employee.OIB);
+            }
+            else
+            {
+                MessageBox.Show("First choose who you wish to remove, then click the button");
+                return;
+            }
             ClearAndFillForms();
         }
 
         private void RemoveProjectBtn_Click(object sender, EventArgs e)
         {
-            var removeProject = new RemoveProject();
-            removeProject.ShowDialog();
+            if (AllProjectsLbx.SelectedIndex > -1)
+            {
+                string message = "Are you sure you wish to remove this project?";
+                string caption = "Asking approval";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result;
+
+                result = MessageBox.Show(message, caption, buttons);
+
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+                var project = AllProjectsLbx.SelectedItem as Project;
+                EmployeeProjectRepository.RemoveAllWithProject(project);
+                AllProjectsRepository.Remove(project);
+            }
+            else
+            {
+                MessageBox.Show("Please choose the project you wish to remove first");
+                return;
+            }
             ClearAndFillForms();
         }
 
@@ -87,6 +128,30 @@ namespace Internship_4_Employees
             }
             else
                 MessageBox.Show("Please choose the project you wish to see the details of");
+        }
+
+        private void EditEmployeeBtn_Click(object sender, EventArgs e)
+        {
+            if (AllEmployeesLbx.SelectedIndex > -1)
+            {
+                var editEmployee = new EditEmployee(AllEmployeesLbx.SelectedItem as Employee);
+                editEmployee.ShowDialog();
+                ClearAndFillForms();
+            }
+            else
+                MessageBox.Show("Please choose the employee you wish to edit the details of");
+        }
+
+        private void EditProjectBtn_Click(object sender, EventArgs e)
+        {
+            if (AllProjectsLbx.SelectedIndex > -1)
+            {
+                var editProject = new EditProject(AllProjectsLbx.SelectedItem as Project);
+                editProject.ShowDialog();
+                ClearAndFillForms();
+            }
+            else
+                MessageBox.Show("Please choose the project you wish to edit the details of");
         }
     }
 }

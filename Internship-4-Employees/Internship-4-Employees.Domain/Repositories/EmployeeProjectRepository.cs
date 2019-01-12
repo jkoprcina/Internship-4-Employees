@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using Internship_4_Employees.Data.Models;
@@ -65,8 +66,6 @@ namespace Internship_4_Employees.Domain.Repositories
             foreach (var connectionToRemove in listOfConnectionsToRemove)
                 _listOfAllConnections.Remove(connectionToRemove);
         }
-
-        
 
         public static void EditSingleEmployee(Employee newEmployee, Employee oldEmployee, List<Project> projects)
         {

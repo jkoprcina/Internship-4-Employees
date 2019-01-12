@@ -165,6 +165,7 @@
             this.EditEmployeeBtn.TabIndex = 11;
             this.EditEmployeeBtn.Text = "Edit Employee";
             this.EditEmployeeBtn.UseVisualStyleBackColor = true;
+            this.EditEmployeeBtn.Click += new System.EventHandler(this.EditEmployeeBtn_Click);
             // 
             // EditProjectBtn
             // 
@@ -175,6 +176,7 @@
             this.EditProjectBtn.TabIndex = 12;
             this.EditProjectBtn.Text = "Edit Project";
             this.EditProjectBtn.UseVisualStyleBackColor = true;
+            this.EditProjectBtn.Click += new System.EventHandler(this.EditProjectBtn_Click);
             // 
             // MainPage
             // 

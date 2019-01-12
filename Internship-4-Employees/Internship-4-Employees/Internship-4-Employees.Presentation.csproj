@@ -90,18 +90,6 @@
       <DependentUpon>ProjectDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RemoveForms\RemoveEmployee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RemoveForms\RemoveEmployee.Designer.cs">
-      <DependentUpon>RemoveEmployee.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RemoveForms\RemoveProject.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RemoveForms\RemoveProject.Designer.cs">
-      <DependentUpon>RemoveProject.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="AddForms\AddEmployee.resx">
       <DependentUpon>AddEmployee.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,12 +120,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="RemoveForms\RemoveEmployee.resx">
-      <DependentUpon>RemoveEmployee.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RemoveForms\RemoveProject.resx">
-      <DependentUpon>RemoveProject.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

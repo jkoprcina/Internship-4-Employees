@@ -25,10 +25,10 @@ namespace Internship_4_Employees
             NotAddedEmployees = AllEmployeesRepository.GetAllEmployees().ToList();
             AddedEmployees = new List<Employee>();
             InitializeComponent();
-            CleaningAndFillingForm();
+            ClearAndFillForm();
         }
 
-        private void CleaningAndFillingForm()
+        private void ClearAndFillForm()
         {
             EmployeesToAddLbx.Items.Clear();
             AddedEmployeesLbx.Items.Clear();
@@ -42,7 +42,7 @@ namespace Internship_4_Employees
         {
             if (!ProjectNameTbx.Text.ToString().CheckIfEmpty() && AddedEmployees.Count > 0)
             {
-                if (!AllProjectsRepository.AddProject(ProjectNameTbx.Text,StartDtp.Value, FinishingDtp.Value, AddedEmployees))
+                if (!AllProjectsRepository.AddProject(ProjectNameTbx.Text,StartDtp.Value, FinishDtp.Value, AddedEmployees))
                 {
                     MessageBox.Show("Something was wrong");
                     return;
@@ -66,7 +66,7 @@ namespace Internship_4_Employees
                 employee.WorkingHours = int.Parse(WorkingHoursTxt.Text);
                 AddedEmployees.Add(employee);
                 NotAddedEmployees.Remove(employee);
-                CleaningAndFillingForm();
+                ClearAndFillForm();
             }
             else
             {

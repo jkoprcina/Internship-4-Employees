@@ -31,7 +31,7 @@
             this.ProjectNameTbx = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.StartDtp = new System.Windows.Forms.DateTimePicker();
-            this.FinishingDtp = new System.Windows.Forms.DateTimePicker();
+            this.FinishDtp = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -67,12 +67,12 @@
             this.StartDtp.Size = new System.Drawing.Size(200, 20);
             this.StartDtp.TabIndex = 4;
             // 
-            // FinishingDtp
+            // FinishDtp
             // 
-            this.FinishingDtp.Location = new System.Drawing.Point(138, 178);
-            this.FinishingDtp.Name = "FinishingDtp";
-            this.FinishingDtp.Size = new System.Drawing.Size(200, 20);
-            this.FinishingDtp.TabIndex = 5;
+            this.FinishDtp.Location = new System.Drawing.Point(138, 178);
+            this.FinishDtp.Name = "FinishDtp";
+            this.FinishDtp.Size = new System.Drawing.Size(200, 20);
+            this.FinishDtp.TabIndex = 5;
             // 
             // label3
             // 
@@ -174,7 +174,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.FinishingDtp);
+            this.Controls.Add(this.FinishDtp);
             this.Controls.Add(this.StartDtp);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ProjectNameTbx);
@@ -190,7 +190,7 @@
         private System.Windows.Forms.TextBox ProjectNameTbx;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker StartDtp;
-        private System.Windows.Forms.DateTimePicker FinishingDtp;
+        private System.Windows.Forms.DateTimePicker FinishDtp;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;

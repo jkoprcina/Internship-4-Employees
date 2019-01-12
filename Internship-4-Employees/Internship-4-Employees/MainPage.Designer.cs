@@ -28,130 +28,174 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.AllEmployeesLbx = new System.Windows.Forms.ListBox();
+            this.AllProjectsLbx = new System.Windows.Forms.ListBox();
+            this.AllEmployeesLbl = new System.Windows.Forms.Label();
+            this.AllProjectsLbl = new System.Windows.Forms.Label();
             this.AddEmployeeBtn = new System.Windows.Forms.Button();
-            this.RemoveEmployeeBtn = new System.Windows.Forms.Button();
-            this.EditBtn = new System.Windows.Forms.Button();
-            this.InformationBtn = new System.Windows.Forms.Button();
-            this.ExitBtn = new System.Windows.Forms.Button();
-            this.AddProjectBtn = new System.Windows.Forms.Button();
+            this.ShutDownBtn = new System.Windows.Forms.Button();
             this.RemoveProjectBtn = new System.Windows.Forms.Button();
+            this.RemoveEmployeeBtn = new System.Windows.Forms.Button();
+            this.AddProjectBtn = new System.Windows.Forms.Button();
+            this.EmployeeDetailsBtn = new System.Windows.Forms.Button();
+            this.ProjectDetailsBtn = new System.Windows.Forms.Button();
+            this.EditEmployeeBtn = new System.Windows.Forms.Button();
+            this.EditProjectBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // AllEmployeesLbx
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(154, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 29);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Welcome";
+            this.AllEmployeesLbx.FormattingEnabled = true;
+            this.AllEmployeesLbx.Location = new System.Drawing.Point(12, 44);
+            this.AllEmployeesLbx.Name = "AllEmployeesLbx";
+            this.AllEmployeesLbx.Size = new System.Drawing.Size(201, 342);
+            this.AllEmployeesLbx.TabIndex = 0;
             // 
-            // label2
+            // AllProjectsLbx
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(70, 61);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(272, 29);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "What do you wish to do?";
+            this.AllProjectsLbx.FormattingEnabled = true;
+            this.AllProjectsLbx.Location = new System.Drawing.Point(228, 44);
+            this.AllProjectsLbx.Name = "AllProjectsLbx";
+            this.AllProjectsLbx.Size = new System.Drawing.Size(203, 342);
+            this.AllProjectsLbx.TabIndex = 1;
+            // 
+            // AllEmployeesLbl
+            // 
+            this.AllEmployeesLbl.AutoSize = true;
+            this.AllEmployeesLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AllEmployeesLbl.Location = new System.Drawing.Point(62, 13);
+            this.AllEmployeesLbl.Name = "AllEmployeesLbl";
+            this.AllEmployeesLbl.Size = new System.Drawing.Size(108, 20);
+            this.AllEmployeesLbl.TabIndex = 2;
+            this.AllEmployeesLbl.Text = "All Employees";
+            // 
+            // AllProjectsLbl
+            // 
+            this.AllProjectsLbl.AutoSize = true;
+            this.AllProjectsLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AllProjectsLbl.Location = new System.Drawing.Point(287, 13);
+            this.AllProjectsLbl.Name = "AllProjectsLbl";
+            this.AllProjectsLbl.Size = new System.Drawing.Size(87, 20);
+            this.AllProjectsLbl.TabIndex = 3;
+            this.AllProjectsLbl.Text = "All Projects";
             // 
             // AddEmployeeBtn
             // 
-            this.AddEmployeeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddEmployeeBtn.Location = new System.Drawing.Point(75, 193);
+            this.AddEmployeeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddEmployeeBtn.Location = new System.Drawing.Point(457, 12);
             this.AddEmployeeBtn.Name = "AddEmployeeBtn";
-            this.AddEmployeeBtn.Size = new System.Drawing.Size(267, 62);
-            this.AddEmployeeBtn.TabIndex = 2;
+            this.AddEmployeeBtn.Size = new System.Drawing.Size(161, 60);
+            this.AddEmployeeBtn.TabIndex = 4;
             this.AddEmployeeBtn.Text = "Add Employee";
             this.AddEmployeeBtn.UseVisualStyleBackColor = true;
             this.AddEmployeeBtn.Click += new System.EventHandler(this.AddEmployeeBtn_Click);
             // 
+            // ShutDownBtn
+            // 
+            this.ShutDownBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShutDownBtn.Location = new System.Drawing.Point(457, 408);
+            this.ShutDownBtn.Name = "ShutDownBtn";
+            this.ShutDownBtn.Size = new System.Drawing.Size(161, 60);
+            this.ShutDownBtn.TabIndex = 5;
+            this.ShutDownBtn.Text = "Shut Down App";
+            this.ShutDownBtn.UseVisualStyleBackColor = true;
+            this.ShutDownBtn.Click += new System.EventHandler(this.ShutDownBtn_Click);
+            // 
+            // RemoveProjectBtn
+            // 
+            this.RemoveProjectBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RemoveProjectBtn.Location = new System.Drawing.Point(457, 210);
+            this.RemoveProjectBtn.Name = "RemoveProjectBtn";
+            this.RemoveProjectBtn.Size = new System.Drawing.Size(161, 60);
+            this.RemoveProjectBtn.TabIndex = 6;
+            this.RemoveProjectBtn.Text = "Remove Project";
+            this.RemoveProjectBtn.UseVisualStyleBackColor = true;
+            this.RemoveProjectBtn.Click += new System.EventHandler(this.RemoveProjectBtn_Click);
+            // 
             // RemoveEmployeeBtn
             // 
-            this.RemoveEmployeeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RemoveEmployeeBtn.Location = new System.Drawing.Point(75, 329);
+            this.RemoveEmployeeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RemoveEmployeeBtn.Location = new System.Drawing.Point(457, 144);
             this.RemoveEmployeeBtn.Name = "RemoveEmployeeBtn";
-            this.RemoveEmployeeBtn.Size = new System.Drawing.Size(267, 62);
-            this.RemoveEmployeeBtn.TabIndex = 3;
+            this.RemoveEmployeeBtn.Size = new System.Drawing.Size(161, 60);
+            this.RemoveEmployeeBtn.TabIndex = 7;
             this.RemoveEmployeeBtn.Text = "Remove Employee";
             this.RemoveEmployeeBtn.UseVisualStyleBackColor = true;
             this.RemoveEmployeeBtn.Click += new System.EventHandler(this.RemoveEmployeeBtn_Click);
             // 
-            // EditBtn
-            // 
-            this.EditBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EditBtn.Location = new System.Drawing.Point(75, 465);
-            this.EditBtn.Name = "EditBtn";
-            this.EditBtn.Size = new System.Drawing.Size(265, 62);
-            this.EditBtn.TabIndex = 4;
-            this.EditBtn.Text = "Edit Info";
-            this.EditBtn.UseVisualStyleBackColor = true;
-            this.EditBtn.Click += new System.EventHandler(this.EditBtn_Click);
-            // 
-            // InformationBtn
-            // 
-            this.InformationBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InformationBtn.Location = new System.Drawing.Point(75, 125);
-            this.InformationBtn.Name = "InformationBtn";
-            this.InformationBtn.Size = new System.Drawing.Size(267, 62);
-            this.InformationBtn.TabIndex = 5;
-            this.InformationBtn.Text = "See All information";
-            this.InformationBtn.UseVisualStyleBackColor = true;
-            this.InformationBtn.Click += new System.EventHandler(this.InformationBtn_Click_1);
-            // 
-            // ExitBtn
-            // 
-            this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExitBtn.Location = new System.Drawing.Point(75, 533);
-            this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(267, 62);
-            this.ExitBtn.TabIndex = 6;
-            this.ExitBtn.Text = "Shut Down App";
-            this.ExitBtn.UseVisualStyleBackColor = true;
-            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
-            // 
             // AddProjectBtn
             // 
-            this.AddProjectBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddProjectBtn.Location = new System.Drawing.Point(75, 261);
+            this.AddProjectBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddProjectBtn.Location = new System.Drawing.Point(457, 78);
             this.AddProjectBtn.Name = "AddProjectBtn";
-            this.AddProjectBtn.Size = new System.Drawing.Size(267, 62);
-            this.AddProjectBtn.TabIndex = 7;
+            this.AddProjectBtn.Size = new System.Drawing.Size(161, 60);
+            this.AddProjectBtn.TabIndex = 8;
             this.AddProjectBtn.Text = "Add Project";
             this.AddProjectBtn.UseVisualStyleBackColor = true;
             this.AddProjectBtn.Click += new System.EventHandler(this.AddProjectBtn_Click);
             // 
-            // RemoveProjectBtn
+            // EmployeeDetailsBtn
             // 
-            this.RemoveProjectBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RemoveProjectBtn.Location = new System.Drawing.Point(75, 397);
-            this.RemoveProjectBtn.Name = "RemoveProjectBtn";
-            this.RemoveProjectBtn.Size = new System.Drawing.Size(267, 62);
-            this.RemoveProjectBtn.TabIndex = 8;
-            this.RemoveProjectBtn.Text = "Remove Project";
-            this.RemoveProjectBtn.UseVisualStyleBackColor = true;
-            this.RemoveProjectBtn.Click += new System.EventHandler(this.RemoveProjectBtn_Click);
+            this.EmployeeDetailsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmployeeDetailsBtn.Location = new System.Drawing.Point(23, 408);
+            this.EmployeeDetailsBtn.Name = "EmployeeDetailsBtn";
+            this.EmployeeDetailsBtn.Size = new System.Drawing.Size(182, 60);
+            this.EmployeeDetailsBtn.TabIndex = 9;
+            this.EmployeeDetailsBtn.Text = "Employee Details";
+            this.EmployeeDetailsBtn.UseVisualStyleBackColor = true;
+            this.EmployeeDetailsBtn.Click += new System.EventHandler(this.EmployeeDetailsBtn_Click);
+            // 
+            // ProjectDetailsBtn
+            // 
+            this.ProjectDetailsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProjectDetailsBtn.Location = new System.Drawing.Point(239, 408);
+            this.ProjectDetailsBtn.Name = "ProjectDetailsBtn";
+            this.ProjectDetailsBtn.Size = new System.Drawing.Size(182, 60);
+            this.ProjectDetailsBtn.TabIndex = 10;
+            this.ProjectDetailsBtn.Text = "ProjectDetails";
+            this.ProjectDetailsBtn.UseVisualStyleBackColor = true;
+            this.ProjectDetailsBtn.Click += new System.EventHandler(this.ProjectDetailsBtn_Click);
+            // 
+            // EditEmployeeBtn
+            // 
+            this.EditEmployeeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditEmployeeBtn.Location = new System.Drawing.Point(457, 276);
+            this.EditEmployeeBtn.Name = "EditEmployeeBtn";
+            this.EditEmployeeBtn.Size = new System.Drawing.Size(161, 60);
+            this.EditEmployeeBtn.TabIndex = 11;
+            this.EditEmployeeBtn.Text = "Edit Employee";
+            this.EditEmployeeBtn.UseVisualStyleBackColor = true;
+            // 
+            // EditProjectBtn
+            // 
+            this.EditProjectBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditProjectBtn.Location = new System.Drawing.Point(457, 342);
+            this.EditProjectBtn.Name = "EditProjectBtn";
+            this.EditProjectBtn.Size = new System.Drawing.Size(161, 60);
+            this.EditProjectBtn.TabIndex = 12;
+            this.EditProjectBtn.Text = "Edit Project";
+            this.EditProjectBtn.UseVisualStyleBackColor = true;
             // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(413, 644);
-            this.Controls.Add(this.RemoveProjectBtn);
+            this.ClientSize = new System.Drawing.Size(642, 483);
+            this.Controls.Add(this.EditProjectBtn);
+            this.Controls.Add(this.EditEmployeeBtn);
+            this.Controls.Add(this.ProjectDetailsBtn);
+            this.Controls.Add(this.EmployeeDetailsBtn);
             this.Controls.Add(this.AddProjectBtn);
-            this.Controls.Add(this.ExitBtn);
-            this.Controls.Add(this.InformationBtn);
-            this.Controls.Add(this.EditBtn);
             this.Controls.Add(this.RemoveEmployeeBtn);
+            this.Controls.Add(this.RemoveProjectBtn);
+            this.Controls.Add(this.ShutDownBtn);
             this.Controls.Add(this.AddEmployeeBtn);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.AllProjectsLbl);
+            this.Controls.Add(this.AllEmployeesLbl);
+            this.Controls.Add(this.AllProjectsLbx);
+            this.Controls.Add(this.AllEmployeesLbx);
             this.Name = "MainPage";
-            this.Text = "Form1";
+            this.Text = "MainPage";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,15 +203,18 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListBox AllEmployeesLbx;
+        private System.Windows.Forms.ListBox AllProjectsLbx;
+        private System.Windows.Forms.Label AllEmployeesLbl;
+        private System.Windows.Forms.Label AllProjectsLbl;
         private System.Windows.Forms.Button AddEmployeeBtn;
-        private System.Windows.Forms.Button RemoveEmployeeBtn;
-        private System.Windows.Forms.Button EditBtn;
-        private System.Windows.Forms.Button InformationBtn;
-        private System.Windows.Forms.Button ExitBtn;
-        private System.Windows.Forms.Button AddProjectBtn;
+        private System.Windows.Forms.Button ShutDownBtn;
         private System.Windows.Forms.Button RemoveProjectBtn;
+        private System.Windows.Forms.Button RemoveEmployeeBtn;
+        private System.Windows.Forms.Button AddProjectBtn;
+        private System.Windows.Forms.Button EmployeeDetailsBtn;
+        private System.Windows.Forms.Button ProjectDetailsBtn;
+        private System.Windows.Forms.Button EditEmployeeBtn;
+        private System.Windows.Forms.Button EditProjectBtn;
     }
 }
-

@@ -46,40 +46,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddEmployee.cs">
+    <Compile Include="AddForms\AddEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddEmployee.Designer.cs">
+    <Compile Include="AddForms\AddEmployee.Designer.cs">
       <DependentUpon>AddEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddProject.cs">
+    <Compile Include="AddForms\AddProject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddProject.Designer.cs">
+    <Compile Include="AddForms\AddProject.Designer.cs">
       <DependentUpon>AddProject.cs</DependentUpon>
     </Compile>
-    <Compile Include="Edit.cs">
+    <Compile Include="EditForms\EditEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Edit.Designer.cs">
-      <DependentUpon>Edit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EditEmployee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditEmployee.Designer.cs">
+    <Compile Include="EditForms\EditEmployee.Designer.cs">
       <DependentUpon>EditEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditProject.cs">
+    <Compile Include="EditForms\EditProject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditProject.Designer.cs">
+    <Compile Include="EditForms\EditProject.Designer.cs">
       <DependentUpon>EditProject.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmployeeDetails.cs">
+    <Compile Include="InformationForms\EmployeeDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmployeeDetails.Designer.cs">
+    <Compile Include="InformationForms\EmployeeDetails.Designer.cs">
       <DependentUpon>EmployeeDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="MainPage.cs">
@@ -88,57 +82,45 @@
     <Compile Include="MainPage.Designer.cs">
       <DependentUpon>MainPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Information.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Information.Designer.cs">
-      <DependentUpon>Information.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="ProjectDetails.cs">
+    <Compile Include="InformationForms\ProjectDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectDetails.Designer.cs">
+    <Compile Include="InformationForms\ProjectDetails.Designer.cs">
       <DependentUpon>ProjectDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RemoveEmployee.cs">
+    <Compile Include="RemoveForms\RemoveEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RemoveEmployee.Designer.cs">
+    <Compile Include="RemoveForms\RemoveEmployee.Designer.cs">
       <DependentUpon>RemoveEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="RemoveProject.cs">
+    <Compile Include="RemoveForms\RemoveProject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RemoveProject.Designer.cs">
+    <Compile Include="RemoveForms\RemoveProject.Designer.cs">
       <DependentUpon>RemoveProject.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddEmployee.resx">
+    <EmbeddedResource Include="AddForms\AddEmployee.resx">
       <DependentUpon>AddEmployee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddProject.resx">
+    <EmbeddedResource Include="AddForms\AddProject.resx">
       <DependentUpon>AddProject.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Edit.resx">
-      <DependentUpon>Edit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditEmployee.resx">
+    <EmbeddedResource Include="EditForms\EditEmployee.resx">
       <DependentUpon>EditEmployee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditProject.resx">
+    <EmbeddedResource Include="EditForms\EditProject.resx">
       <DependentUpon>EditProject.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmployeeDetails.resx">
+    <EmbeddedResource Include="InformationForms\EmployeeDetails.resx">
       <DependentUpon>EmployeeDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainPage.resx">
       <DependentUpon>MainPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Information.resx">
-      <DependentUpon>Information.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProjectDetails.resx">
+    <EmbeddedResource Include="InformationForms\ProjectDetails.resx">
       <DependentUpon>ProjectDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -150,10 +132,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="RemoveEmployee.resx">
+    <EmbeddedResource Include="RemoveForms\RemoveEmployee.resx">
       <DependentUpon>RemoveEmployee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RemoveProject.resx">
+    <EmbeddedResource Include="RemoveForms\RemoveProject.resx">
       <DependentUpon>RemoveProject.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

@@ -35,7 +35,7 @@
             this.DateOfBirthLbl = new System.Windows.Forms.Label();
             this.OccupationLbl = new System.Windows.Forms.Label();
             this.ChooseProjectsLbl = new System.Windows.Forms.Label();
-            this.RolesCmb = new System.Windows.Forms.ComboBox();
+            this.PositionsCmb = new System.Windows.Forms.ComboBox();
             this.AllProjectsCbx = new System.Windows.Forms.CheckedListBox();
             this.DateOfBirthPicker = new System.Windows.Forms.DateTimePicker();
             this.SaveBtn = new System.Windows.Forms.Button();
@@ -108,13 +108,13 @@
             this.ChooseProjectsLbl.TabIndex = 6;
             this.ChooseProjectsLbl.Text = "Choose \r\nprojects:";
             // 
-            // RolesCmb
+            // PositionsCmb
             // 
-            this.RolesCmb.FormattingEnabled = true;
-            this.RolesCmb.Location = new System.Drawing.Point(146, 208);
-            this.RolesCmb.Name = "RolesCmb";
-            this.RolesCmb.Size = new System.Drawing.Size(214, 21);
-            this.RolesCmb.TabIndex = 13;
+            this.PositionsCmb.FormattingEnabled = true;
+            this.PositionsCmb.Location = new System.Drawing.Point(146, 208);
+            this.PositionsCmb.Name = "PositionsCmb";
+            this.PositionsCmb.Size = new System.Drawing.Size(214, 21);
+            this.PositionsCmb.TabIndex = 13;
             // 
             // AllProjectsCbx
             // 
@@ -180,7 +180,7 @@
             this.Controls.Add(this.OIBLbl);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.SaveBtn);
-            this.Controls.Add(this.RolesCmb);
+            this.Controls.Add(this.PositionsCmb);
             this.Controls.Add(this.AllProjectsCbx);
             this.Controls.Add(this.DateOfBirthPicker);
             this.Controls.Add(this.ChooseProjectsLbl);
@@ -206,7 +206,7 @@
         private System.Windows.Forms.Label DateOfBirthLbl;
         private System.Windows.Forms.Label OccupationLbl;
         private System.Windows.Forms.Label ChooseProjectsLbl;
-        private System.Windows.Forms.ComboBox RolesCmb;
+        private System.Windows.Forms.ComboBox PositionsCmb;
         private System.Windows.Forms.CheckedListBox AllProjectsCbx;
         private System.Windows.Forms.DateTimePicker DateOfBirthPicker;
         private System.Windows.Forms.Button SaveBtn;

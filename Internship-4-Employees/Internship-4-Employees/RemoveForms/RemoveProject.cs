@@ -14,25 +14,17 @@ namespace Internship_4_Employees
 {
     public partial class RemoveProject : Form
     {
-        private AllProjectsRepository _listOfProjects;
-        private AllEmployeesRepository _listOfEmployees;
-        private List<Project> _projects;
-        private List<Employee> _employees;
-        public RemoveProject(AllEmployeesRepository listOfEmployees, AllProjectsRepository listOfProjects)
+        public RemoveProject()
         {
             InitializeComponent();
-            _listOfProjects = listOfProjects;
-            _listOfEmployees = listOfEmployees;
-            _projects = _listOfProjects.GetAllProjects();
-            _employees = _listOfEmployees.GetAllEmployees();
             CleaningAndFillingForm();
         }
 
         private void CleaningAndFillingForm()
         {
             AllProjectsLbx.Items.Clear();
-            foreach (var p in _projects)
-                AllProjectsLbx.Items.Add(p.ToString());
+            foreach (var p in AllProjectsRepository.GetAllProjects())
+                AllProjectsLbx.Items.Add(p);
         }
 
         private void ExitBtn_Click(object sender, EventArgs e) => Close();
@@ -41,15 +33,9 @@ namespace Internship_4_Employees
         {
             if (AllProjectsLbx.SelectedIndex > -1)
             {
-                string[] temp = AllProjectsLbx.SelectedItem.ToString().Split('\t');
-                var project = _listOfProjects.Get(temp[0]);
-                _listOfProjects.Remove(project);
-                foreach (var employee in _employees)
-                {
-                    if (employee.Projects.Contains(project))
-                        employee.Projects.Remove(project);
-                }
-
+                var project = AllProjectsLbx.SelectedItem as Project;
+                EmployeeProjectRepository.RemoveAllWithProject(project);
+                AllProjectsRepository.Remove(project);
             }
             else
             {
@@ -63,8 +49,7 @@ namespace Internship_4_Employees
         {
             if (AllProjectsLbx.SelectedIndex > -1)
             {
-                string[] temp = AllProjectsLbx.SelectedItem.ToString().Split('\t');
-                var projectDetails = new ProjectDetails(_listOfProjects.Get(temp[0]));
+                var projectDetails = new ProjectDetails(AllProjectsLbx.SelectedItem as Project);
                 projectDetails.ShowDialog();
             }
             else

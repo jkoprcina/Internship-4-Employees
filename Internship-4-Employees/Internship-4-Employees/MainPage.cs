@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Internship_4_Employees.Data.Models;
+using Internship_4_Employees.Domain.Repositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,71 +9,84 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Internship_4_Employees.Data.Models;
-using Internship_4_Employees.Domain.Repositories;
 
 namespace Internship_4_Employees
 {
     public partial class MainPage : Form
     {
-        public AllEmployeesRepository listOfEmployees;
-        public AllProjectsRepository listOfProjects;
-        public List<Employee> _employees;
-        public List<Project> _projects;
-        public int counter;
+        private List<Employee> _employees;
+        private List<Project> _projects;
         public MainPage()
         {
             InitializeComponent();
-            listOfEmployees = new AllEmployeesRepository();
-            listOfProjects = new AllProjectsRepository();
-            var _employees = listOfEmployees.GetAllEmployees();
-            var _projects = listOfProjects.GetAllProjects();
-            foreach (var e in _employees)
-            {
-                foreach (var p in _projects)
-                {
-                    e.AddProject(p);
-                    p.AddEmployee(e);
-                }
-            }
+            ClearAndFillForms();
         }
 
-        private void InformationBtn_Click_1(object sender, EventArgs e)
+        private void ShutDownBtn_Click(object sender, EventArgs e) => Close();
+
+        private void ClearAndFillForms()
         {
-            var info = new Information(listOfEmployees, listOfProjects);
-            info.ShowDialog();
+            _employees = AllEmployeesRepository.GetAllEmployees().ToList();
+            _projects = AllProjectsRepository.GetAllProjects().ToList();
+            AllEmployeesLbx.Items.Clear();
+            AllProjectsLbx.Items.Clear();
+            foreach (var employee in _employees)
+                AllEmployeesLbx.Items.Add(employee);
+            foreach (var project in _projects)
+                AllProjectsLbx.Items.Add(project);
+
         }
 
         private void AddEmployeeBtn_Click(object sender, EventArgs e)
         {
-            var addEmployee = new AddEmployee(listOfEmployees, listOfProjects);
+            var addEmployee = new AddEmployee();
             addEmployee.ShowDialog();
+            ClearAndFillForms();
         }
 
         private void AddProjectBtn_Click(object sender, EventArgs e)
         {
-            var addProject = new AddProject(listOfProjects, listOfEmployees);
+            var addProject = new AddProject();
             addProject.ShowDialog();
+            ClearAndFillForms();
         }
 
         private void RemoveEmployeeBtn_Click(object sender, EventArgs e)
         {
-            var removeEmployee = new RemoveEmployee(listOfEmployees, listOfProjects);
+            var removeEmployee = new RemoveEmployee();
             removeEmployee.ShowDialog();
+            ClearAndFillForms();
         }
 
         private void RemoveProjectBtn_Click(object sender, EventArgs e)
         {
-            var removeProject = new RemoveProject(listOfEmployees, listOfProjects);
+            var removeProject = new RemoveProject();
             removeProject.ShowDialog();
+            ClearAndFillForms();
         }
 
-        private void EditBtn_Click(object sender, EventArgs e)
+        private void EmployeeDetailsBtn_Click(object sender, EventArgs e)
         {
-            var edit = new Edit(listOfEmployees, listOfProjects);
-            edit.ShowDialog();
+            if (AllEmployeesLbx.SelectedIndex > -1)
+            {
+                var employeeDetails = new EmployeeDetails(AllEmployeesLbx.SelectedItem as Employee);
+                employeeDetails.ShowDialog();
+                ClearAndFillForms();
+            }
+            else
+                MessageBox.Show("Please choose the employee you wish to see the details of");
         }
 
-        private void ExitBtn_Click(object sender, EventArgs e) => Application.Exit();
+        private void ProjectDetailsBtn_Click(object sender, EventArgs e)
+        {
+            if (AllProjectsLbx.SelectedIndex > -1)
+            {
+                var projectDetails = new ProjectDetails(AllProjectsLbx.SelectedItem as Project);
+                projectDetails.ShowDialog();
+                ClearAndFillForms();
+            }
+            else
+                MessageBox.Show("Please choose the project you wish to see the details of");
+        }
     }
 }

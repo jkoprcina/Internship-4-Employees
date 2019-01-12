@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Internship_4_Employees.Domain.Repositories;
 using Internship_4_Employees.Interface.Enumerators;
 
 namespace Internship_4_Employees
@@ -22,26 +23,8 @@ namespace Internship_4_Employees
             StartLbl.Text = project.ProjectStart.ToShortDateString();
             FinishLbl.Text = project.ProjectFinish.ToShortDateString();
             StateLbl.Text = project.State.ToString();
-            if (project.Assigned == null)
-                AssignedToProjectRtb.Text = "Nobody is yet assigned to the project";
-            else
-            {
-                foreach (var r in Enum.GetValues(typeof(Jobs)))
-                {
-                    var counter = 0;
-                    foreach (var e in project.Assigned)
-                    {
-                        if (e.Role == (Jobs) r)
-                            counter++;
-                    }
-                    AssignedToProjectRtb.Text += $"{r} {counter}\n";
-                    foreach (var e in project.Assigned)
-                    {
-                        if (e.Role == (Jobs) r)
-                            AssignedToProjectRtb.Text += e.ToString();
-                    }
-                }
-            }
+
+            AssignedToProjectRtb.Text += AllProjectsRepository.ThisProjectWorkers(project);
         }
 
         private void ExitBtn_Click(object sender, EventArgs e) => Close();

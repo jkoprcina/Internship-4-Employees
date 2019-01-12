@@ -32,16 +32,19 @@
             this.lastnameLbl = new System.Windows.Forms.Label();
             this.NameTbx = new System.Windows.Forms.TextBox();
             this.LastnameTbx = new System.Windows.Forms.TextBox();
-            this.DateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.DateOfBirthPicker = new System.Windows.Forms.DateTimePicker();
             this.AddBtn = new System.Windows.Forms.Button();
             this.oibLbl = new System.Windows.Forms.Label();
             this.OIBTxb = new System.Windows.Forms.TextBox();
-            this.AllProjectsCbx = new System.Windows.Forms.CheckedListBox();
             this.PositionCbx = new System.Windows.Forms.ComboBox();
             this.BackBtn = new System.Windows.Forms.Button();
             this.DateOfBirthLbl = new System.Windows.Forms.Label();
             this.PositionLbl = new System.Windows.Forms.Label();
             this.ProjectsLbl = new System.Windows.Forms.Label();
+            this.SaveProjectBtn = new System.Windows.Forms.Button();
+            this.WorkingHoursTxt = new System.Windows.Forms.TextBox();
+            this.ChosenProjectsLbx = new System.Windows.Forms.ListBox();
+            this.ProjectsToChooseFromLbx = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // nameLbl
@@ -78,17 +81,17 @@
             this.LastnameTbx.Size = new System.Drawing.Size(190, 20);
             this.LastnameTbx.TabIndex = 3;
             // 
-            // DateTimePicker1
+            // DateOfBirthPicker
             // 
-            this.DateTimePicker1.Location = new System.Drawing.Point(125, 150);
-            this.DateTimePicker1.Name = "DateTimePicker1";
-            this.DateTimePicker1.Size = new System.Drawing.Size(214, 20);
-            this.DateTimePicker1.TabIndex = 4;
+            this.DateOfBirthPicker.Location = new System.Drawing.Point(125, 150);
+            this.DateOfBirthPicker.Name = "DateOfBirthPicker";
+            this.DateOfBirthPicker.Size = new System.Drawing.Size(214, 20);
+            this.DateOfBirthPicker.TabIndex = 4;
             // 
             // AddBtn
             // 
             this.AddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddBtn.Location = new System.Drawing.Point(16, 415);
+            this.AddBtn.Location = new System.Drawing.Point(310, 438);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(152, 86);
             this.AddBtn.TabIndex = 6;
@@ -113,15 +116,6 @@
             this.OIBTxb.Size = new System.Drawing.Size(190, 20);
             this.OIBTxb.TabIndex = 8;
             // 
-            // AllProjectsCbx
-            // 
-            this.AllProjectsCbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AllProjectsCbx.FormattingEnabled = true;
-            this.AllProjectsCbx.Location = new System.Drawing.Point(125, 241);
-            this.AllProjectsCbx.Name = "AllProjectsCbx";
-            this.AllProjectsCbx.Size = new System.Drawing.Size(214, 156);
-            this.AllProjectsCbx.TabIndex = 9;
-            // 
             // PositionCbx
             // 
             this.PositionCbx.FormattingEnabled = true;
@@ -133,7 +127,7 @@
             // BackBtn
             // 
             this.BackBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BackBtn.Location = new System.Drawing.Point(193, 415);
+            this.BackBtn.Location = new System.Drawing.Point(47, 438);
             this.BackBtn.Name = "BackBtn";
             this.BackBtn.Size = new System.Drawing.Size(146, 86);
             this.BackBtn.TabIndex = 11;
@@ -165,27 +159,64 @@
             // 
             this.ProjectsLbl.AutoSize = true;
             this.ProjectsLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProjectsLbl.Location = new System.Drawing.Point(12, 241);
+            this.ProjectsLbl.Location = new System.Drawing.Point(358, 172);
             this.ProjectsLbl.Name = "ProjectsLbl";
             this.ProjectsLbl.Size = new System.Drawing.Size(69, 40);
             this.ProjectsLbl.TabIndex = 14;
             this.ProjectsLbl.Text = "Choose \r\nprojects:";
             // 
+            // SaveProjectBtn
+            // 
+            this.SaveProjectBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveProjectBtn.Location = new System.Drawing.Point(247, 296);
+            this.SaveProjectBtn.Name = "SaveProjectBtn";
+            this.SaveProjectBtn.Size = new System.Drawing.Size(75, 36);
+            this.SaveProjectBtn.TabIndex = 16;
+            this.SaveProjectBtn.Text = "Save";
+            this.SaveProjectBtn.UseVisualStyleBackColor = true;
+            this.SaveProjectBtn.Click += new System.EventHandler(this.SaveProjectBtn_Click);
+            // 
+            // WorkingHoursTxt
+            // 
+            this.WorkingHoursTxt.Location = new System.Drawing.Point(257, 256);
+            this.WorkingHoursTxt.Name = "WorkingHoursTxt";
+            this.WorkingHoursTxt.Size = new System.Drawing.Size(65, 20);
+            this.WorkingHoursTxt.TabIndex = 17;
+            // 
+            // ChosenProjectsLbx
+            // 
+            this.ChosenProjectsLbx.FormattingEnabled = true;
+            this.ChosenProjectsLbx.Location = new System.Drawing.Point(362, 256);
+            this.ChosenProjectsLbx.Name = "ChosenProjectsLbx";
+            this.ChosenProjectsLbx.Size = new System.Drawing.Size(193, 147);
+            this.ChosenProjectsLbx.TabIndex = 18;
+            // 
+            // ProjectsToChooseFromLbx
+            // 
+            this.ProjectsToChooseFromLbx.FormattingEnabled = true;
+            this.ProjectsToChooseFromLbx.Location = new System.Drawing.Point(16, 256);
+            this.ProjectsToChooseFromLbx.Name = "ProjectsToChooseFromLbx";
+            this.ProjectsToChooseFromLbx.Size = new System.Drawing.Size(198, 147);
+            this.ProjectsToChooseFromLbx.TabIndex = 19;
+            // 
             // AddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(360, 524);
+            this.ClientSize = new System.Drawing.Size(580, 604);
+            this.Controls.Add(this.ProjectsToChooseFromLbx);
+            this.Controls.Add(this.ChosenProjectsLbx);
+            this.Controls.Add(this.WorkingHoursTxt);
+            this.Controls.Add(this.SaveProjectBtn);
             this.Controls.Add(this.ProjectsLbl);
             this.Controls.Add(this.PositionLbl);
             this.Controls.Add(this.DateOfBirthLbl);
             this.Controls.Add(this.BackBtn);
             this.Controls.Add(this.PositionCbx);
-            this.Controls.Add(this.AllProjectsCbx);
             this.Controls.Add(this.OIBTxb);
             this.Controls.Add(this.oibLbl);
             this.Controls.Add(this.AddBtn);
-            this.Controls.Add(this.DateTimePicker1);
+            this.Controls.Add(this.DateOfBirthPicker);
             this.Controls.Add(this.LastnameTbx);
             this.Controls.Add(this.NameTbx);
             this.Controls.Add(this.lastnameLbl);
@@ -203,15 +234,18 @@
         private System.Windows.Forms.Label lastnameLbl;
         private System.Windows.Forms.TextBox NameTbx;
         private System.Windows.Forms.TextBox LastnameTbx;
-        private System.Windows.Forms.DateTimePicker DateTimePicker1;
+        private System.Windows.Forms.DateTimePicker DateOfBirthPicker;
         private System.Windows.Forms.Button AddBtn;
         private System.Windows.Forms.Label oibLbl;
         private System.Windows.Forms.TextBox OIBTxb;
-        private System.Windows.Forms.CheckedListBox AllProjectsCbx;
         private System.Windows.Forms.ComboBox PositionCbx;
         private System.Windows.Forms.Button BackBtn;
         private System.Windows.Forms.Label DateOfBirthLbl;
         private System.Windows.Forms.Label PositionLbl;
         private System.Windows.Forms.Label ProjectsLbl;
+        private System.Windows.Forms.Button SaveProjectBtn;
+        private System.Windows.Forms.TextBox WorkingHoursTxt;
+        private System.Windows.Forms.ListBox ChosenProjectsLbx;
+        private System.Windows.Forms.ListBox ProjectsToChooseFromLbx;
     }
 }

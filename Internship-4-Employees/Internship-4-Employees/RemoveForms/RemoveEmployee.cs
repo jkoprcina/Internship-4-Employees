@@ -14,25 +14,17 @@ namespace Internship_4_Employees
 {
     public partial class RemoveEmployee : Form
     {
-        private AllProjectsRepository _listOfProjects;
-        private AllEmployeesRepository _listOfEmployees;
-        private List<Project> _projects;
-        private List<Employee> _employees;
-        public RemoveEmployee(AllEmployeesRepository listOfEmployees, AllProjectsRepository listOfProjects)
+        public RemoveEmployee()
         {
             InitializeComponent();
-            _listOfProjects = listOfProjects;
-            _listOfEmployees = listOfEmployees;
-            _projects = _listOfProjects.GetAllProjects();
-            _employees = _listOfEmployees.GetAllEmployees();
             CleaningAndFillingForm();
         }
 
         public void CleaningAndFillingForm()
         {
             AllEmployeesLbx.Items.Clear();
-            foreach (var e in _employees)
-                AllEmployeesLbx.Items.Add(e.ToString());
+            foreach (var e in AllEmployeesRepository.GetAllEmployees())
+                AllEmployeesLbx.Items.Add(e);
         }
 
         private void RemoveBtn_Click(object sender, EventArgs e)
@@ -51,13 +43,9 @@ namespace Internship_4_Employees
                     return;
                 }
 
-                string[] employeeInfoArray = AllEmployeesLbx.SelectedItem.ToString().Split('\t');
-                var employee = _listOfEmployees.Get(int.Parse(employeeInfoArray[1]));
-                _listOfEmployees.Remove(int.Parse(employeeInfoArray[1]));
-                foreach (var p in _projects)
-                {
-                    p.RemoveAssignedIfContained(employee);
-                }
+                var employee = AllEmployeesLbx.SelectedItem as Employee;
+                EmployeeProjectRepository.RemoveAllWithEmployee(employee);
+                AllEmployeesRepository.Remove(employee.OIB);
             }
             else
             {

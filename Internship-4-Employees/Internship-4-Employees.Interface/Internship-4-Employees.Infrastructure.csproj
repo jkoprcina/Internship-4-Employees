@@ -46,8 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enumerators\Roles.cs" />
+    <Compile Include="Enumerators\Jobs.cs" />
     <Compile Include="Enumerators\States.cs" />
+    <Compile Include="Extensions\InputCheckers.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

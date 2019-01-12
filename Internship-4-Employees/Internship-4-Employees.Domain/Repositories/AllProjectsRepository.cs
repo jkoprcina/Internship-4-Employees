@@ -5,40 +5,31 @@ using System.Text;
 using System.Threading.Tasks;
 using Internship_4_Employees.Data.Models;
 using Internship_4_Employees.Interface.Enumerators;
+using Internship_4_Employees.Interface.Extensions;
 
 namespace Internship_4_Employees.Domain.Repositories
 {
-    public class AllProjectsRepository
+    public static class AllProjectsRepository
     {
-        private List<Project> _projects;
-        private List<Employee> _employees = new List<Employee>();
-        public AllProjectsRepository()
+        public static List<Project> _projects = new List<Project>()
         {
-            FakeData();
-        }
+            new Project("Google Glasses", new DateTime(2016, 1, 18), new DateTime(2017, 1, 18)),
+            new Project("Jarvis", new DateTime(2015, 1, 18), new DateTime(2020, 1, 18))
+        };
 
-        private void FakeData()
-        {
-            _projects = new List<Project>()
-            {
-                new Project("Google Glasses", _employees, new DateTime(2016, 1, 18), new DateTime(2017, 1, 18), States.Ongoing, 10),
-                new Project("Jarvis", _employees, new DateTime(2015, 1, 18), new DateTime(2020, 1, 18), States.Ongoing, 12)
-            };
-        }
+        public static List<Project> GetAllProjects() => _projects;
 
-        public List<Project> GetAllProjects() => _projects;
-
-        public void Add(Project projectToAdd)
+        public static void Add(Project projectToAdd)
         {
             _projects.Add(projectToAdd);
         }
 
-        public void Remove(Project project)
+        public static void Remove(Project project)
         {
             _projects.Remove(project);
         }
 
-        public Project Get(string nameOfProjectToGet)
+        public static Project Get(string nameOfProjectToGet)
         {
             foreach (var p in _projects)
             {
@@ -46,6 +37,62 @@ namespace Internship_4_Employees.Domain.Repositories
                     return p;
             }
             return null;
+        }
+
+        public static bool AddProject(string projectName, DateTime startDate, DateTime finishDate, List<Employee> employees)
+        {
+            if (CheckNameAuthentication(projectName))
+            {
+                var project = new Project(projectName.RemoveWhiteSpaces().CapitalizeWords(), startDate, finishDate);
+                _projects.Add(project);
+
+                EmployeeProjectRepository.AddConnectionsSingleProject(project.Name, employees);
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public static bool CheckNameAuthentication(string projectName)
+        {
+            foreach (var project in _projects)
+            {
+                if (project.Name == projectName)
+                    return false;
+            }
+            return true;
+        }
+
+        public static string ThisProjectWorkers(Project project)
+        {
+            var infoToReturn = "";
+            foreach (var r in Enum.GetValues(typeof(JobEnums.Jobs)))
+            {
+                var counter = 0;
+                foreach (var connectionInstance in EmployeeProjectRepository._listOfAllConnections)
+                {
+                    if (connectionInstance.Name == project.Name)
+                    {
+                        var employee = AllEmployeesRepository.Get(connectionInstance.OIB);
+                        if (employee.Role == (JobEnums.Jobs)r)
+                            counter++;
+                    }
+                }
+                infoToReturn += $"{r}: {counter}\n";
+                foreach (var connectionInstance in EmployeeProjectRepository._listOfAllConnections)
+                {
+                    if (connectionInstance.Name == project.Name)
+                    { 
+                        var employeeToFind = AllEmployeesRepository.Get(connectionInstance.OIB);
+                        if (employeeToFind.Role == (JobEnums.Jobs)r)
+                            infoToReturn += employeeToFind.ToString();
+                    }
+                }
+            }
+            if (infoToReturn == "")
+                return "Nobody is yet assigned to the project";
+            else
+                return infoToReturn;
         }
     }
 }

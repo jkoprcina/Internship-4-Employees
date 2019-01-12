@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace Internship_4_Employees.Interface.Enumerators
 {
-    public enum States
+    public class StateEnums
     {
-        Finished = 1,
-        Ongoing = 2,
-        Planned = 3
+        public enum States
+        {
+            Finished,
+            Ongoing,
+            Planned
+        }
     }
 }

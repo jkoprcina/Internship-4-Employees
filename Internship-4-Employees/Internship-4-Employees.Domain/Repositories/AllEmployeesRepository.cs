@@ -5,59 +5,117 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Internship_4_Employees.Interface.Extensions;
 
 namespace Internship_4_Employees.Domain.Repositories
 {
-    public class AllEmployeesRepository
+    public static class AllEmployeesRepository
     {
-        private List<Employee> _employees;
-        private List<Project> _projects = new List<Project>();
-        public AllEmployeesRepository()
+        public static List<Employee> Employees = new List<Employee>()
         {
-            FakeData();
+            new Employee("Josip", "Koprcina", DateTime.Now, "0", JobEnums.Jobs.Programer),
+            new Employee("Ana", "Vucak", DateTime.Now, "1", JobEnums.Jobs.Designer)
+        };
+
+
+        public static List<Employee> GetAllEmployees() => Employees;
+
+        public static void Add(Employee employeeToAdd)
+        {
+            Employees.Add(employeeToAdd);
         }
 
-        private void FakeData()
+        public static void Remove(string personToRemove)
         {
-            _employees = new List<Employee>()
-            {
-                new Employee("Josip", "Koprcina", DateTime.Now, 0, Jobs.Programer, _projects),
-                new Employee("Ana", "Vucak", DateTime.Now, 1, Jobs.Programer, _projects)
-            };
-        }
-
-        public List<Employee> GetAllEmployees() => _employees;
-
-        public void Add(Employee employeeToAdd)
-        {
-            _employees.Add(employeeToAdd);
-        }
-
-        public void Edit(Employee personToEdit)
-        {
-
-        }
-
-        public void Remove(int personToRemove)
-        {
-            foreach (var e in _employees)
+            foreach (var e in Employees)
             {
                 if (e.OIB == personToRemove)
                 {
-                    _employees.Remove(e);
+                    Employees.Remove(e);
                     break;
                 }
             }
         }
 
-        public Employee Get(int personToReturnOib)
+        public static bool AddEmployee(string name, string lastname, string oib, DateTime dateOfBirth, string job, List<Project> projects)
         {
-            foreach (var e in _employees)
+            if (CheckIfOIBExists(oib.RemoveAllTheWhiteSpaces()) && CheckIfOfAge(dateOfBirth))
             {
-                if (e.OIB == personToReturnOib)
+                var employee = new Employee(name.RemoveWhiteSpaces().CapitalizeWords(),
+                    lastname.RemoveWhiteSpaces().CapitalizeWords(),
+                    dateOfBirth, oib.RemoveAllTheWhiteSpaces(), (JobEnums.Jobs) Enum.Parse(typeof(JobEnums.Jobs), job));
+                Employees.Add(employee);
+
+                EmployeeProjectRepository.AddConnectionsSingleEmployee(employee.OIB, projects);
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public static bool CheckIfOIBExists(string oib)
+        {
+            foreach(var employee in Employees)
+            {
+                if (employee.OIB == oib)
+                    return false;
+            }
+            return true;
+        }
+
+        public static bool CheckIfOfAge(DateTime dateOfBirth)
+        {
+            return dateOfBirth < DateTime.Now.AddYears(-18);
+        }
+
+        public static Employee Get(string oibOfEmployeeToGet)
+        {
+            foreach (var e in Employees)
+            {
+                if (e.OIB == oibOfEmployeeToGet)
                     return e;
             }
             return null;
         }
+
+        public static int CountWeeklyWorkTime(Employee employee)
+        {
+            var weeklyWorkTime = 0;
+            foreach (var connectionInstance in EmployeeProjectRepository._listOfAllConnections)
+            {
+                var project = AllProjectsRepository.Get(connectionInstance.Name);
+                if (connectionInstance.OIB == employee.OIB && project.State == StateEnums.States.Ongoing)
+                {
+                    weeklyWorkTime += connectionInstance.WorkingHours;
+                }
+            }
+            return weeklyWorkTime;
+        }
+
+        public static string NumberOfProjectsForOneEmployee(Employee employee)
+        {
+            var numberOfFinishedProjects = 0;
+            var numberOfOngoingProjects = 0;
+            var numberOfPlannedProjects = 0;
+
+            foreach (var connectionInstance in EmployeeProjectRepository._listOfAllConnections)
+            {
+                var project = AllProjectsRepository.Get(connectionInstance.Name);
+                if (connectionInstance.OIB == employee.OIB)
+                {
+                    if (project.State == StateEnums.States.Finished)
+                        numberOfFinishedProjects++;
+                    else if (project.State == StateEnums.States.Ongoing)
+                        numberOfOngoingProjects++;
+                    else
+                        numberOfPlannedProjects++;
+                }
+            }
+            return $"Number of finished Projects: {numberOfFinishedProjects}\n" +
+                   $"Number of ongoing Projects: {numberOfOngoingProjects}\n" +
+                   $"Number of planned Projects: {numberOfPlannedProjects}\n";
+        }
+
+        
     }
 }

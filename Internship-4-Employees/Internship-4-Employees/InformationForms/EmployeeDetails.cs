@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Internship_4_Employees.Domain.Repositories;
 
 namespace Internship_4_Employees
 {
@@ -16,10 +17,12 @@ namespace Internship_4_Employees
         public EmployeeDetails(Employee employee)
         {
             InitializeComponent();
+            var weeklyWorkTime = AllEmployeesRepository.CountWeeklyWorkTime(employee);
+            EmployeeDetailsRtb.Text += AllEmployeesRepository.NumberOfProjectsForOneEmployee(employee);
             EmployeeDetailsRtb.Text += employee.AllInfo();
-            if(employee.WeeklyWorkTime > 41)
+            if(weeklyWorkTime > 41)
                 NumberOfHoursWorkingBtn.BackColor = Color.Red;
-            else if (employee.WeeklyWorkTime < 42 && employee.WeeklyWorkTime > 20)
+            else if (weeklyWorkTime < 42 && weeklyWorkTime > 20)
                 NumberOfHoursWorkingBtn.BackColor = Color.Green;
             else
                 NumberOfHoursWorkingBtn.BackColor = Color.Yellow;

@@ -66,21 +66,5 @@ namespace Internship_4_Employees.Domain.Repositories
             foreach (var connectionToRemove in listOfConnectionsToRemove)
                 _listOfAllConnections.Remove(connectionToRemove);
         }
-
-        public static void EditSingleEmployee(Employee newEmployee, Employee oldEmployee, List<Project> projects)
-        {
-            foreach (var project in projects)
-            {
-                
-            }
-        }
-
-        public static void EditSingleProject(Project newProject, Project oldProject, List<Employee> employees)
-        {
-            foreach (var employee in employees)
-            {
-                
-            }
-        }
     }
 }

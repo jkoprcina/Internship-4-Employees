@@ -52,14 +52,29 @@ namespace Internship_4_Employees
         {
             if (EmployeesWorkingOnProject.Count > 0)
             {
-                AllProjectsRepository.Edit(_project.Name, StartDtp.Value, FinishDtp.Value,EmployeesWorkingOnProject);
+                var message = AllProjectsRepository.Edit(_project.Name, StartDtp.Value, FinishDtp.Value,EmployeesWorkingOnProject);
+                if (message == "The edit was successful!")
+                    MessageBox.Show(message);
+                else
+                {
+                    MessageBox.Show(message);
+                    return;
+                }
             }
             else
             {
-                MessageBox.Show(@"Wrong input");
-                return;
+                if (!(EmployeesWorkingOnProject.Count > 0))
+                {
+                    MessageBox.Show("You need to choose at least one employee to work on the project");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Wrong input");
+                    return;
+                }
             }
-            
+
             Close();
         }
 

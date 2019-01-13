@@ -43,19 +43,35 @@ namespace Internship_4_Employees
         {
 
             if (!NameTbx.Text.ToString().CheckIfEmpty() && !LastnameTbx.Text.ToString().CheckIfEmpty() &&
-                OIBTxb.Text.CheckIfNumber() && AddedProjects.Count > 0)
+                OIBTxb.Text.CheckIfNumber() && !OIBTxb.Text.CheckIfEmpty() && PositionCbx.SelectedIndex > -1)
             {
-                if (!AllEmployeesRepository.AddEmployee(NameTbx.Text, LastnameTbx.Text, OIBTxb.Text,
-                    DateOfBirthPicker.Value, PositionCbx.SelectedItem.ToString(), AddedProjects))
+                var message = AllEmployeesRepository.AddEmployee(NameTbx.Text, LastnameTbx.Text, OIBTxb.Text,
+                    DateOfBirthPicker.Value, PositionCbx.SelectedItem.ToString(), AddedProjects);
+                if (message == "The input was successful!")
+                    MessageBox.Show(message);
+                else
                 {
-                    MessageBox.Show("Something was wrong");
+                    MessageBox.Show(message);
                     return;
                 }
             }
             else
             {
-                MessageBox.Show(@"Wrong input");
-                return;
+                if (NameTbx.Text.ToString().CheckIfEmpty() || LastnameTbx.Text.ToString().CheckIfEmpty())
+                {
+                    MessageBox.Show("You can't leave the 'name' and 'lastname' parts empty");
+                    return;
+                }
+                else if (!(PositionCbx.SelectedIndex > -1))
+                {
+                    MessageBox.Show("You need to choose the job the employee will be doing");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Wrong input");
+                    return;
+                }
             }
             Close();
         }

@@ -37,20 +37,22 @@ namespace Internship_4_Employees.Domain.Repositories
             }
         }
 
-        public static bool AddEmployee(string name, string lastname, string oib, DateTime dateOfBirth, string job, List<Project> projects)
+        public static string AddEmployee(string name, string lastname, string oib, DateTime dateOfBirth, string job, List<Project> projects)
         {
-            if (CheckIfOIBExists(oib.RemoveAllTheWhiteSpaces()) && CheckIfOfAge(dateOfBirth))
+            if (!CheckIfOIBExists(oib.RemoveAllTheWhiteSpaces()))
+                return "The OIB is already in use, it must be unique";
+            else if(!CheckIfOfAge(dateOfBirth))
+                return "The user must be at least 18 years old";
+            else
             {
                 var employee = new Employee(name.RemoveWhiteSpaces().CapitalizeWords(),
                     lastname.RemoveWhiteSpaces().CapitalizeWords(),
-                    dateOfBirth, oib.RemoveAllTheWhiteSpaces(), (JobEnums.Jobs) Enum.Parse(typeof(JobEnums.Jobs), job));
+                    dateOfBirth, oib.RemoveAllTheWhiteSpaces(), (JobEnums.Jobs)Enum.Parse(typeof(JobEnums.Jobs), job));
                 Add(employee);
 
                 EmployeeProjectRepository.AddConnectionsSingleEmployee(employee.OIB, projects);
-                return true;
             }
-            else
-                return false;
+            return "The input was successful!";
         }
 
         public static bool CheckIfOIBExists(string oib)
@@ -146,20 +148,21 @@ namespace Internship_4_Employees.Domain.Repositories
             return listOfEmployeesNotWorkingOnProject;
         }
 
-        public static bool Edit(string name, string lastname, string oib, DateTime dateOfBirth, string job,List<Project> projects)
+        public static string Edit(string name, string lastname, string oib, DateTime dateOfBirth, string job,List<Project> projects)
         {
             if (CheckIfOfAge(dateOfBirth))
             {
-                var employee = new Employee(name.RemoveWhiteSpaces().CapitalizeWords(),lastname.RemoveWhiteSpaces().CapitalizeWords(),
-                    dateOfBirth, oib.RemoveAllTheWhiteSpaces(), (JobEnums.Jobs)Enum.Parse(typeof(JobEnums.Jobs), job));
+                var employee = new Employee(name.RemoveWhiteSpaces().CapitalizeWords(),
+                    lastname.RemoveWhiteSpaces().CapitalizeWords(),
+                    dateOfBirth, oib.RemoveAllTheWhiteSpaces(), (JobEnums.Jobs) Enum.Parse(typeof(JobEnums.Jobs), job));
                 Remove(oib);
                 Add(employee);
                 EmployeeProjectRepository.RemoveAllWithEmployee(employee);
                 EmployeeProjectRepository.AddConnectionsSingleEmployee(employee.OIB, projects);
-                return true;
+                return "The edit was successful!";
             }
             else
-                return false;
+                return "The user must be at least 18 years old";
         }
     }
 }

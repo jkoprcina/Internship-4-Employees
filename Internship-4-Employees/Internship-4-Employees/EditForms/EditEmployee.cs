@@ -56,17 +56,33 @@ namespace Internship_4_Employees
             if (!NameTbx.Text.ToString().CheckIfEmpty() && !LastnameTbx.Text.ToString().CheckIfEmpty()
                  && PositionsCmb.SelectedIndex > -1)
             {
-                if (!AllEmployeesRepository.Edit(NameTbx.Text, LastnameTbx.Text, _employee.OIB,
-                    DateOfBirthPicker.Value, PositionsCmb.SelectedItem.ToString(), listOfWorkedOnProjects))
+                var message = AllEmployeesRepository.Edit(NameTbx.Text, LastnameTbx.Text, _employee.OIB,
+                    DateOfBirthPicker.Value, PositionsCmb.SelectedItem.ToString(), listOfWorkedOnProjects);
+                if (message == "The edit was successful!")
+                    MessageBox.Show(message);
+                else
                 {
-                    MessageBox.Show("Something was wrong");
+                    MessageBox.Show(message);
                     return;
                 }
             }
             else
             {
-                MessageBox.Show("Wrong input");
-                return;
+                if (NameTbx.Text.ToString().CheckIfEmpty() || LastnameTbx.Text.ToString().CheckIfEmpty())
+                {
+                    MessageBox.Show("You can't leave the 'name' and 'lastname' parts empty");
+                    return;
+                }
+                else if (!(PositionsCmb.SelectedIndex > -1))
+                {
+                    MessageBox.Show("You need to choose the job the employee will be doing");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Wrong input");
+                    return;
+                }
             }
 
             Close();

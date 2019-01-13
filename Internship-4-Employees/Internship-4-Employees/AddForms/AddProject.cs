@@ -42,16 +42,34 @@ namespace Internship_4_Employees
         {
             if (!ProjectNameTbx.Text.ToString().CheckIfEmpty() && AddedEmployees.Count > 0)
             {
-                if (!AllProjectsRepository.AddProject(ProjectNameTbx.Text,StartDtp.Value, FinishDtp.Value, AddedEmployees))
+                var message = AllProjectsRepository.AddProject(ProjectNameTbx.Text, StartDtp.Value, FinishDtp.Value,
+                    AddedEmployees);
+                if (message == "The input was successful!")
+                    MessageBox.Show(message);
+                else
                 {
-                    MessageBox.Show("Something was wrong");
+                    MessageBox.Show(message);
                     return;
                 }
             }
             else
             {
-                MessageBox.Show(@"Wrong input");
-                return;
+                if (ProjectNameTbx.Text.ToString().CheckIfEmpty())
+                {
+                    MessageBox.Show("You need to set a unique project name");
+                    return;
+                }
+                else if(!(AddedEmployees.Count > 0))
+                {
+                    MessageBox.Show("You need to choose at least one employee to work on the project. " +
+                                    "If there are none, go to 'Add Employee' and add one");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Wrong input");
+                    return;
+                }
             }
             Close();
         }

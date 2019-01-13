@@ -51,18 +51,20 @@ namespace Internship_4_Employees.Domain.Repositories
             return null;
         }
 
-        public static bool AddProject(string projectName, DateTime startDate, DateTime finishDate, List<Employee> employees)
+        public static string AddProject(string projectName, DateTime startDate, DateTime finishDate, List<Employee> employees)
         {
-            if (CheckNameAuthentication(projectName))
+            if (!CheckNameAuthentication(projectName))
+                return "The projects's name must be unique";
+            else if (startDate.Date >= finishDate.Date)
+                return "The start date should be before the finish date";
+            else
             {
                 var project = new Project(projectName.RemoveWhiteSpaces().CapitalizeWords(), startDate, finishDate);
                 Add(project);
 
                 EmployeeProjectRepository.AddConnectionsSingleProject(project.Name, employees);
-                return true;
+                return "The input was successful!";
             }
-            else
-                return false;
         }
 
         public static bool CheckNameAuthentication(string projectName)
@@ -137,13 +139,19 @@ namespace Internship_4_Employees.Domain.Repositories
             return listOfNotWorkedOnProjects;
         }
 
-        public static void Edit(string projectName, DateTime startDate, DateTime finishDate, List<Employee> employees)
+        public static string Edit(string projectName, DateTime startDate, DateTime finishDate, List<Employee> employees)
         {
-            var project = new Project(projectName.RemoveWhiteSpaces().CapitalizeWords(), startDate, finishDate);
-            Remove(projectName);
-            Add(project);
-            EmployeeProjectRepository.RemoveAllWithProject(project);
-            EmployeeProjectRepository.AddConnectionsSingleProject(project.Name, employees);
+            if (startDate.Date >= finishDate.Date)
+                return "The start date should be before the finish date";
+            else
+            {
+                var project = new Project(projectName.RemoveWhiteSpaces().CapitalizeWords(), startDate, finishDate);
+                Remove(projectName);
+                Add(project);
+                EmployeeProjectRepository.RemoveAllWithProject(project);
+                EmployeeProjectRepository.AddConnectionsSingleProject(project.Name, employees);
+                return "The edit was successful!";
+            }
         }
     }
 }

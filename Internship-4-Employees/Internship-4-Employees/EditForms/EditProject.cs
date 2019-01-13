@@ -26,7 +26,14 @@ namespace Internship_4_Employees
             EmployeesWorkingOnProject = AllEmployeesRepository.GetAllEmployeesWorkingOnProject(project);
             EmployeesNotWorkingOnProject = AllEmployeesRepository.GetAllEmployeesNotWorkingOnProject(EmployeesWorkingOnProject);
             InitializeComponent();
+            FillFormAtStart();
             ClearAndFillForm();
+        }
+
+        public void FillFormAtStart()
+        {
+            StartDtp.Value = _project.ProjectStart.Date;
+            FinishDtp.Value = _project.ProjectFinish.Date;
         }
 
         public void ClearAndFillForm()
@@ -37,9 +44,6 @@ namespace Internship_4_Employees
                 EmployeesWorkingOnPojectLbx.Items.Add(e);
             foreach (var e in EmployeesNotWorkingOnProject)
                 EmployeesNotWorkingOnProjectLbx.Items.Add(e);
-
-            StartDtp.Value = _project.ProjectStart.Date;
-            FinishDtp.Value = _project.ProjectFinish.Date;
         }
 
         private void ExitBtn_Click(object sender, EventArgs e) => Close();
@@ -48,7 +52,7 @@ namespace Internship_4_Employees
         {
             if (EmployeesWorkingOnProject.Count > 0)
             {
-                AllProjectsRepository.AddProject(_project.Name, StartDtp.Value, FinishDtp.Value,EmployeesWorkingOnProject);
+                AllProjectsRepository.Edit(_project.Name, StartDtp.Value, FinishDtp.Value,EmployeesWorkingOnProject);
             }
             else
             {

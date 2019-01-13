@@ -26,24 +26,29 @@ namespace Internship_4_Employees
             listOfWorkedOnProjects = AllProjectsRepository.GetAllProjectsWorkedOn(_employee.OIB);
             listOfNotWorkedOnProjects = AllProjectsRepository.GetAllProjectsNotWorkedOn(listOfWorkedOnProjects);
             InitializeComponent();
+            FillFormAtStart();
             ClearAndFillForm();
+        }
+
+        public void FillFormAtStart()
+        {
+            foreach (var r in Enum.GetValues(typeof(JobEnums.Jobs)))
+                PositionsCmb.Items.Add(r);
+            NameTbx.Text = _employee.Name;
+            LastnameTbx.Text = _employee.Lastname;
+            EmployeeOIBLbl.Text = _employee.OIB.ToString();
+            PositionsCmb.Text = _employee.Role.ToString();
+            DateOfBirthPicker.Value = _employee.DateOfBirth;
         }
 
         public void ClearAndFillForm()
         {
             ProjectsEmployeeIsOnLbx.Items.Clear();
             ProjectsEmployeeIsNotOnLbx.Items.Clear();
-            foreach (var r in Enum.GetValues(typeof(JobEnums.Jobs)))
-                PositionsCmb.Items.Add(r);
             foreach (var p in listOfWorkedOnProjects)
                 ProjectsEmployeeIsOnLbx.Items.Add(p);
             foreach (var p in listOfNotWorkedOnProjects)
                 ProjectsEmployeeIsNotOnLbx.Items.Add(p);
-            NameTbx.Text = _employee.Name;
-            LastnameTbx.Text = _employee.Lastname;
-            EmployeeOIBLbl.Text = _employee.OIB.ToString();
-            PositionsCmb.Text = _employee.Role.ToString();
-            DateOfBirthPicker.Value = _employee.DateOfBirth;
         }
 
         private void SaveBtn_Click(object sender, EventArgs e)

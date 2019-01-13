@@ -11,7 +11,7 @@ namespace Internship_4_Employees.Domain.Repositories
 {
     public static class AllProjectsRepository
     {
-        public static List<Project> _projects = new List<Project>()
+        private static List<Project> _projects = new List<Project>()
         {
             new Project("Google Glasses", new DateTime(2016, 1, 18), new DateTime(2017, 1, 18)),
             new Project("Jarvis", new DateTime(2015, 1, 18), new DateTime(2020, 1, 18))
@@ -19,6 +19,7 @@ namespace Internship_4_Employees.Domain.Repositories
 
         public static List<Project> GetAllProjects() => _projects;
 
+        //ADD , REMOVE, GET
         public static void Add(Project projectToAdd)
         {
             _projects.Add(projectToAdd);
@@ -51,6 +52,7 @@ namespace Internship_4_Employees.Domain.Repositories
             return null;
         }
 
+        //Add method which checks and adds all needed info
         public static string AddProject(string projectName, DateTime startDate, DateTime finishDate, List<Employee> employees)
         {
             if (!CheckNameAuthentication(projectName))
@@ -67,6 +69,7 @@ namespace Internship_4_Employees.Domain.Repositories
             }
         }
 
+        //Checks if the name already exists because it has to be unique 
         public static bool CheckNameAuthentication(string projectName)
         {
             foreach (var project in _projects)
@@ -77,13 +80,15 @@ namespace Internship_4_Employees.Domain.Repositories
             return true;
         }
 
+        //A method which is used in showing project details. It returns how many of which type (Job/Role) of workers is working on the project
+        //and lists them all by types (Jobs/Roles)
         public static string ThisProjectWorkers(Project project)
         {
             var infoToReturn = "";
             foreach (var r in Enum.GetValues(typeof(JobEnums.Jobs)))
             {
                 var counter = 0;
-                foreach (var connectionInstance in EmployeeProjectRepository._listOfAllConnections)
+                foreach (var connectionInstance in EmployeeProjectRepository.GetAllConnectins())
                 {
                     if (connectionInstance.Name == project.Name)
                     {
@@ -93,7 +98,7 @@ namespace Internship_4_Employees.Domain.Repositories
                     }
                 }
                 infoToReturn += $"{r}: {counter}\n";
-                foreach (var connectionInstance in EmployeeProjectRepository._listOfAllConnections)
+                foreach (var connectionInstance in EmployeeProjectRepository.GetAllConnectins())
                 {
                     if (connectionInstance.Name == project.Name)
                     { 
@@ -109,10 +114,12 @@ namespace Internship_4_Employees.Domain.Repositories
                 return infoToReturn;
         }
 
+        //A method used in edit forms which returns all projects the employee is currently, has once, or will work on
+        //(if nothing changes of course)
         public static List<Project> GetAllProjectsWorkedOn(string oib)
         {
             var listOfWorkedOnProjects = new List<Project>();
-            foreach (var connection in EmployeeProjectRepository._listOfAllConnections)
+            foreach (var connection in EmployeeProjectRepository.GetAllConnectins())
             {
                 if (connection.OIB == oib)
                 {
@@ -124,10 +131,12 @@ namespace Internship_4_Employees.Domain.Repositories
             return listOfWorkedOnProjects;
         }
 
+        //A method used in edit forms which returns all projects which the employee is not currenty, never has, and never will work on
+        //(if nothing changes of course)
         public static List<Project> GetAllProjectsNotWorkedOn(List<Project> projectsWorkedOn)
         {
             var listOfNotWorkedOnProjects = new List<Project>();
-            foreach (var connection in EmployeeProjectRepository._listOfAllConnections)
+            foreach (var connection in EmployeeProjectRepository.GetAllConnectins())
             {
                 var project = Get(connection.Name);
                 if (!projectsWorkedOn.Contains(project))
@@ -139,6 +148,7 @@ namespace Internship_4_Employees.Domain.Repositories
             return listOfNotWorkedOnProjects;
         }
 
+        // Edit method which accepts all info and edits old ones
         public static string Edit(string projectName, DateTime startDate, DateTime finishDate, List<Employee> employees)
         {
             if (startDate.Date >= finishDate.Date)

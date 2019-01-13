@@ -11,7 +11,7 @@ namespace Internship_4_Employees.Domain.Repositories
 {
     public static class EmployeeProjectRepository
     {
-        public static List<EmployeeProjectConnection> _listOfAllConnections = new List<EmployeeProjectConnection>
+        private static List<EmployeeProjectConnection> _listOfAllConnections = new List<EmployeeProjectConnection>
         {
             new EmployeeProjectConnection("0","Google Glasses",21),
             new EmployeeProjectConnection("0","Jarvis",21),
@@ -19,6 +19,10 @@ namespace Internship_4_Employees.Domain.Repositories
             new EmployeeProjectConnection("1","Jarvis",6)
         };
 
+        public static List<EmployeeProjectConnection> GetAllConnectins() => _listOfAllConnections;
+
+        //ADD
+        //Adds connections which the specific employee has
         public static void AddConnectionsSingleEmployee(string oib, List<Project> projects)
         {
             foreach (var projectToAdd in projects)
@@ -29,6 +33,7 @@ namespace Internship_4_Employees.Domain.Repositories
             }
         }
 
+        //Adds connections which the specific project has
         public static void AddConnectionsSingleProject(string name, List<Employee> employees)
         {
             foreach (var employeeToAdd in employees)
@@ -39,6 +44,8 @@ namespace Internship_4_Employees.Domain.Repositories
             }
         }
 
+        //REMOVE
+        //Removes all the connections which the specific employee has
         public static void RemoveAllWithEmployee(Employee employee)
         {
             var listOfConnectionsToRemove = new List<EmployeeProjectConnection>();
@@ -50,6 +57,7 @@ namespace Internship_4_Employees.Domain.Repositories
             Remove(listOfConnectionsToRemove);
         }
 
+        //Removes all the connections which the specific project has
         public static void RemoveAllWithProject(Project project)
         {
             var listOfConnectionsToRemove = new List<EmployeeProjectConnection>();
